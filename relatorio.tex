@@ -387,7 +387,7 @@ qwen2.5-coder & P4 &  80\% & 100\% &  30\% & 100\% & 100\% & 100\% & \textbf{70p
 qwen2.5-coder & P5 & 100\% & 100\% &   0\% &   0\% & 100\% &  86\% & \textbf{100pp} \\
 \midrule
 deepseek-coder & P1 & 100\% & 100\% & 100\% &   0\% & 100\% & 100\% & \textbf{100pp} \\
-deepseek-coder & P2 &   0\% &   0\% & 100\% &   0\% & 100\% &   0\% & \textbf{100pp} \\
+deepseek-coder & P2 &   0\% &   0\% & 100\% & 100\% &   0\% &   0\% & \textbf{100pp} \\
 deepseek-coder & P3 &   0\% &  25\% & 100\% &   0\% & 100\% &   0\% & \textbf{100pp} \\
 deepseek-coder & P4 &   0\% &   0\% &   0\% &   0\% &   0\% & 100\% & \textbf{100pp} \\
 deepseek-coder & P5 &   0\% &  86\% &   0\% & 100\% &   0\% &   0\% & \textbf{100pp} \\
@@ -409,7 +409,7 @@ def palindromo(s):
 
 O bug é sutil: \texttt{s.lower()} normaliza a string original, mas \texttt{s[::-1]} inverte a string \textit{sem} normalizar. A comparação falha quando o palíndromo contém letras maiúsculas, pois \texttt{"Arara".lower()} é \texttt{"arara"} mas \texttt{"Arara"[::-1]} é \texttt{"ararA"} — strings distintas. Três testes falharam por essa razão (\texttt{"Arara"}, \texttt{"Ana"} e \texttt{"AmanaplanacanalPanama"}). O ruído sobre etimologia do termo no \textit{prompt} parece ter distraído o modelo da especificação completa de normalização.
 
-\textbf{P4 — Variação de 70pp mantida.} A instabilidade do prompt em inglês já documentada se confirmou. O \textit{prompt} \texttt{P4\_ingles} gerou novamente o uso incorreto de \texttt{str.count('aeiou')}, que conta a \textit{substring} inteira em vez de cada vogal individualmente, resultando em 30\% de aprovação. As quatro variantes em português (original, reformulado, verboso, vago, com ruído) obtiveram entre 80\% e 100\%.
+\textbf{P4 — Variação de 70pp mantida.} A instabilidade do prompt em inglês já documentada se confirmou. O \textit{prompt} \texttt{P4\_ingles} gerou novamente o uso incorreto de \texttt{str.count('aeiou')}, que conta a \textit{substring} inteira em vez de cada vogal individualmente, resultando em 30\% de aprovação. As cinco variantes em português (original, reformulado, verboso, vago, com ruído) obtiveram entre 80\% e 100\%.
 
 \begin{lstlisting}[style=python, caption={Código gerado por qwen2.5-coder para P4\_ingles — erro de semântica da API}]
 def contar_vogais(texto):
@@ -439,7 +439,7 @@ O \texttt{deepseek-coder} apresentou variação de 100pp em todos os cinco probl
 
 \textbf{P1 — Único ponto de falha no verboso.} Contrariando a tendência geral, o \texttt{P1\_verboso} obteve 0\% enquanto todas as demais variantes (inclusive as em português) alcançaram 100\%. Isso mostra que o problema não é simplesmente o idioma: descrições excessivamente detalhadas podem confundir o modelo mesmo em problemas que ele domina.
 
-\textbf{P2 e P3 — Hipótese de viés de idioma parcialmente refutada.} Anteriormente, apenas o \textit{prompt} em inglês obtinha boas taxas nesses problemas. Com a cobertura completa, verificou-se que o \texttt{deepseek-coder} também obtém 100\% no \texttt{P2\_verboso} e 100\% no \texttt{P3\_vago}. Assim, a falha não é simplesmente ``não entender português'', mas sim uma sensibilidade ao estilo específico do enunciado: o modelo responde bem a inglês, a descrições muito detalhadas em português e a enunciados muito concisos, mas falha com formulações padrão.
+\textbf{P2 e P3 — Hipótese de viés de idioma parcialmente refutada.} Anteriormente, apenas o \textit{prompt} em inglês obtinha boas taxas nesses problemas. Com a cobertura completa, verificou-se que o \texttt{deepseek-coder} também obtém 100\% no \texttt{P2\_verboso} e 100\% no \texttt{P3\_vago}. Contudo, os padrões são opostos entre os dois problemas: para P2, o verboso funciona mas o vago falha (0\%); para P3, o vago funciona mas o verboso falha (0\%). Não existe, portanto, um estilo alternativo consistentemente eficaz em português — a sensibilidade do modelo ao formato do enunciado é imprevisível e varia por problema. A única regularidade observada é que o inglês funciona para todos os problemas onde o modelo gera código sintaticamente válido.
 
 \textbf{P4 — Falha sistemática com exceção isolada.} Das seis variantes, apenas \texttt{P4\_com\_ruido} obteve 100\%. O código gerado foi:
 
@@ -452,7 +452,7 @@ def contar_vogais(string):
     return count
 \end{lstlisting}
 
-A enumeração explícita das vogais no texto do \textit{prompt} (``a, e, i, o, u'') também está presente nos demais prompts de P4, portanto a diferença é mais provável o contexto de ruído semântico que enquadrou o problema de uma forma que favoreceu a implementação correta. As outras cinco variantes resultaram em código sintaticamente inválido ou incompleto.
+Vale notar que a enumeração explícita das vogais (``a, e, i, o, u'') está presente em apenas três dos seis prompts de P4: \texttt{P4\_original}, \texttt{P4\_ingles} e \texttt{P4\_com\_ruido}. Os três que \textit{não} contêm a enumeração (\texttt{P4\_reformulado}, \texttt{P4\_verboso}, \texttt{P4\_vago}) resultaram em sintaxe inválida. Isso levanta a hipótese de que a enumeração literal pode ser necessária para que o \texttt{deepseek-coder} gere uma implementação correta — mas, como \texttt{P4\_original} e \texttt{P4\_ingles} também contêm a enumeração e falharam (por sintaxe inválida), a enumeração é condição necessária mas não suficiente. As outras cinco variantes resultaram em código sintaticamente inválido ou incompleto.
 
 \textbf{P5 — Dois prompts funcionando, revelando a relevância da avaliação multidimensional.} Com seis variantes, verificou-se que não apenas o \texttt{P5\_reformulado} (85.7\%) funciona, mas também o \texttt{P5\_verboso} (100\%). Isso reforça o argumento de Bommasani et al. \cite{bommasani2023helm}: um único \textit{prompt} poderia levar a conclusões opostas — desde ``o modelo resolve P5 perfeitamente'' (verboso) até ``o modelo não consegue resolver P5'' (original, inglês, vago, com ruído).
 
@@ -470,7 +470,6 @@ A análise qualitativa dos códigos gerados permitiu categorizar as falhas em ti
 \midrule
 Erro de sintaxe (não executa)       & deepseek-coder & P3\_original, P2\_vago, P3\_verboso \\
 Variável indefinida                 & deepseek-coder & P2\_original \\
-Problema trocado                    & deepseek-coder & P2\_vago (gerou anagrama) \\
 Nome de função incorreto            & deepseek-coder & P2\_reformulado (\texttt{palindrome} vs \texttt{palindromo}) \\
 Código incompleto                   & deepseek-coder & P4\_original, P4\_reformulado \\
 Erro de semântica de API            & qwen2.5-coder  & P4\_ingles (\texttt{str.count} com substring) \\
