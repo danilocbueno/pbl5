@@ -1,0 +1,516 @@
+\documentclass[12pt,
+    english,
+    french,
+    spanish,
+    brazil,
+    ]{article}
+
+%% Language and font encodings
+\usepackage[brazil]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{indentfirst}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{url}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+
+%% Configuração de exibição do bloco de código (Listings)
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color[gray]{0.95},
+    extendedchars=true,
+    literate={á}{{\'a}}1 {ã}{{\~a}}1 {ç}{{\c{c}}}1 {õ}{{\~o}}1 {é}{{\'e}}1
+             {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {À}{{\`A}}1 {É}{{\'E}}1
+             {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+             {Á}{{\'A}}1 {Ã}{{\~A}}1 {Ç}{{\c{C}}}1 {Õ}{{\~O}}1
+}
+
+\lstdefinestyle{python}{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color[rgb]{0.13,0.29,0.53}\bfseries,
+    stringstyle=\color[rgb]{0.31,0.60,0.02},
+    commentstyle=\color[rgb]{0.56,0.35,0.01}\itshape,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color[gray]{0.95},
+    showstringspaces=false,
+    extendedchars=true,
+    literate={á}{{\'a}}1 {ã}{{\~a}}1 {ç}{{\c{c}}}1 {õ}{{\~o}}1 {é}{{\'e}}1
+             {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {â}{{\^a}}1 {ê}{{\^e}}1
+             {ô}{{\^o}}1 {Á}{{\'A}}1 {Ã}{{\~A}}1 {É}{{\'E}}1 {Ó}{{\'O}}1
+             {ã}{{\~a}}1 {õ}{{\~o}}1 {->}{{$\rightarrow$}}1
+}
+
+%% Configuração da Capa / Página Inicial
+\title{\textbf{Avaliação de Consistência e Robustez em Modelos de Linguagem para Geração de Código} \\[0.5em]
+\large{Disciplina: Teste de Software}}
+\author{\textbf{Alunos:} \\
+Danilo Camargo Bueno -- RA: 289959 \\
+Deive Audieres Leal -- RA: 083423}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\vspace{2cm}
+
+\tableofcontents
+\newpage
+
+% =============================================================================
+\section{Descrição da Aplicação Analisada e do Problema Investigado}
+% =============================================================================
+
+Este trabalho avalia a qualidade de dois modelos de linguagem de larga escala (LLMs) especializados em geração de código: \texttt{qwen2.5-coder:1.5b} e \texttt{deepseek-coder:1.3b}. Ambos os modelos foram executados localmente em um Mac Mini M4 por meio da plataforma Ollama\footnote{\url{https://ollama.com}}, sem acesso a recursos de nuvem ou API externa.
+
+O problema investigado consiste em avaliar em que medida esses modelos são capazes de gerar código Python funcionalmente correto para tarefas simples, e se essa capacidade se mantém consistente quando o mesmo problema é apresentado sob diferentes formulações de \textit{prompt}.
+
+A escolha da geração de código como domínio de avaliação justifica-se pela sua capacidade de mitigar o \textit{Oracle Problem}, amplamente discutido na literatura \cite{barr2015oracle}: diferentemente de tarefas de geração de texto livre, a corretude de um trecho de código pode ser verificada objetivamente por meio da execução de testes unitários. Isso permite que a avaliação seja automatizada e reproduzível.
+
+Os cinco problemas escolhidos cobrem funcionalidades algorítmicas elementares em Python:
+
+\begin{itemize}
+    \item \textbf{P1} — encontrar o maior número de uma lista;
+    \item \textbf{P2} — verificar se uma string é palíndromo, ignorando maiúsculas e espaços;
+    \item \textbf{P3} — calcular o fatorial de um número inteiro de forma recursiva;
+    \item \textbf{P4} — contar vogais em uma string, sem distinção de maiúsculas;
+    \item \textbf{P5} — retornar os dois maiores valores de uma lista como uma tupla ordenada.
+\end{itemize}
+
+% =============================================================================
+\section{Fundamentação da Estratégia de Avaliação Adotada}
+% =============================================================================
+
+A estratégia adotada baseia-se em dois princípios da literatura de teste de sistemas de IA: o \textbf{teste metamórfico} e a \textbf{avaliação de robustez adversarial}.
+
+\subsection{Teste Metamórfico}
+
+Proposto por Chen et al. \cite{chen2018metamorphic}, o teste metamórfico consiste em definir relações entre entradas e saídas esperadas que devem ser preservadas pelo sistema. Em vez de verificar se uma saída específica é correta, verifica-se se a relação entre saídas produzidas por entradas relacionadas é coerente.
+
+Para a tarefa de geração de código, a relação metamórfica adotada é a seguinte: \textit{se dois prompts descrevem o mesmo problema com formulações diferentes, os códigos gerados devem ser funcionalmente equivalentes}, ou seja, devem obter a mesma taxa de aprovação na bateria de testes unitários.
+
+\subsection{Avaliação de Robustez}
+
+Inspirada no \textit{framework} PromptRobust \cite{zhu2023promptrobust}, a estratégia de robustez consiste em submeter os modelos a variações controladas do \textit{prompt} de entrada e observar a estabilidade da saída. As variações aplicadas foram, cada uma sistematicamente aplicada a todos os cinco problemas:
+
+\begin{itemize}
+    \item \textbf{Reformulação semântica} (\texttt{reformulado}): reescrita do enunciado com vocabulário diferente, mantendo o significado;
+    \item \textbf{Mudança de idioma} (\texttt{ingles}): tradução do enunciado para o inglês;
+    \item \textbf{Detalhamento excessivo} (\texttt{verboso}): enunciado longo com informações redundantes e explicitação de casos triviais;
+    \item \textbf{Simplificação} (\texttt{vago}): enunciado mínimo, sem especificações detalhadas;
+    \item \textbf{Inserção de ruído semântico} (\texttt{com\_ruido}): adição de informações históricas irrelevantes antes do enunciado real.
+\end{itemize}
+
+Combinado ao enunciado direto em português (\texttt{original}), cada problema foi avaliado com exatamente \textbf{seis variantes de \textit{prompt}}, totalizando 60 combinações modelo~$\times$~variante.
+
+\subsection{Resolução do Oracle Problem}
+
+A principal vantagem metodológica desta abordagem é a resolução do \textit{Oracle Problem}. Para cada problema, o grupo elaborou previamente uma bateria de 7 a 10 testes unitários cobrindo casos gerais, casos extremos e casos negativos. O código gerado é executado automaticamente contra esses testes, eliminando a subjetividade na avaliação.
+
+\subsection{Protocolo de Coleta e Extração de Código}
+
+Os modelos foram instruídos por meio de um \textit{system prompt} explícito a responderem apenas com código Python puro, sem explicações ou formatação adicional. O \textit{system prompt} utilizado foi:
+
+\begin{lstlisting}[style=python, caption={System prompt utilizado na coleta de respostas}]
+Você é um assistente de programação Python. Responda APENAS com o código Python solicitado, sem explicações, sem markdown, sem blocos de código cercados por ```.
+Apenas o código puro.
+\end{lstlisting}
+
+Apesar dessa instrução, o modelo \texttt{deepseek-coder} frequentemente ignorou o \textit{system prompt} e incluiu explicações junto ao código. Para garantir uma comparação justa — avaliando a capacidade de resolução do problema e não a aderência ao formato — foi desenvolvido um script de extração (\texttt{extrair\_codigo.py}) que separa o código Python válido do restante da resposta antes da execução dos testes. Os casos em que não foi possível extrair código sintaticamente válido foram registrados como falha irrecuperável.
+
+Os \textit{prompts} utilizados para cada problema e suas variações são apresentados na Tabela~\ref{tab:prompts}.
+
+\begin{table}[H]
+\centering
+\caption{Variações de \textit{prompt} utilizadas por problema}
+\label{tab:prompts}
+\begin{tabularx}{\textwidth}{llX}
+\toprule
+\textbf{Código} & \textbf{Tipo} & \textbf{Descrição} \\
+\midrule
+P\textit{n}\_original    & Enunciado direto (PT)     & Enunciado em português com especificação objetiva da função \\
+P\textit{n}\_reformulado & Reformulação semântica    & Reescrita com vocabulário diferente, mesmo significado \\
+P\textit{n}\_ingles      & Mudança de idioma         & Tradução do enunciado para o inglês \\
+P\textit{n}\_verboso     & Detalhamento excessivo    & Enunciado longo com informações redundantes \\
+P\textit{n}\_vago        & Enunciado simplificado    & Enunciado mínimo sem especificação detalhada \\
+P\textit{n}\_com\_ruido  & Ruído semântico           & Informação histórica irrelevante inserida antes do enunciado \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+A seguir são apresentados os \textit{prompts} completos utilizados, incluindo o \textit{system prompt}. Todos os prompts foram enviados com o mesmo \textit{system prompt} apresentado anteriormente.
+
+\begin{lstlisting}[style=python, caption={Prompts — Problema P1 (maior número)}]
+# P1_original
+Escreva uma função Python chamada `maior_numero` que recebe uma lista de
+inteiros e retorna o maior valor da lista.
+
+# P1_reformulado
+Implemente em Python uma função chamada `maior_numero` que, dado um array
+de números inteiros, encontra e devolve o elemento de maior valor.
+
+# P1_ingles
+Write a Python function called `maior_numero` that takes a list of integers
+and returns the largest value in the list.
+
+# P1_verboso
+Preciso de uma função Python. O nome deve ser `maior_numero`. Ela vai receber
+como parâmetro uma lista contendo números inteiros (positivos, negativos ou
+zero). O retorno deve ser o número mais alto presente nessa lista. Não precisa
+tratar lista vazia.
+
+# P1_vago
+Função Python `maior_numero` que retorna o maior elemento de uma lista.
+
+# P1_com_ruido
+Estou aprendendo estruturas de dados em Python. Por sinal, o algoritmo de busca
+do maior elemento foi estudado por Knuth no livro TAOCP. De qualquer forma,
+escreva uma função chamada `maior_numero` que recebe uma lista de inteiros e
+retorna o maior valor.
+\end{lstlisting}
+
+\begin{lstlisting}[style=python, caption={Prompts — Problema P2 (palíndromo)}]
+# P2_original
+Escreva uma função Python chamada `palindromo` que recebe uma string e
+retorna True se ela for um palíndromo (igual lida de trás pra frente,
+ignorando maiúsculas e espaços), ou False caso contrário.
+
+# P2_reformulado
+Crie uma função Python `palindromo` que verifica se uma palavra ou frase
+é um palíndromo. Desconsidere diferenças entre maiúsculas e minúsculas e
+espaços. Retorne True ou False.
+
+# P2_ingles
+Write a Python function called `palindromo` that checks whether a string
+is a palindrome. Ignore case and spaces. Return True or False.
+
+# P2_vago
+Função Python `palindromo` que checa palíndromo, ignora maiúsculas e espaços.
+
+# P2_verboso
+Preciso de uma função Python. O nome deve ser `palindromo`. Ela vai receber
+como parâmetro uma string qualquer, que pode ter letras maiúsculas, minúsculas
+e espaços. O retorno deve ser True se a string for um palíndromo (igual quando
+lida de trás para frente), ou False caso contrário. Para a comparação, ignore
+diferenças entre maiúsculas e minúsculas e desconsidere os espaços.
+
+# P2_com_ruido
+Estou estudando strings em Python. Aliás, a palavra palindromo vem do grego
+palindromos, que significa correr de volta. De qualquer forma, escreva uma
+função chamada `palindromo` que recebe uma string e retorna True se ela for
+um palíndromo, ignorando maiúsculas e espaços, ou False caso contrário.
+\end{lstlisting}
+
+\begin{lstlisting}[style=python, caption={Prompts — Problema P3 (fatorial)}]
+# P3_original
+Escreva uma função Python chamada `fatorial` que calcula o fatorial de um
+número inteiro n usando recursão. Considere que n >= 0.
+
+# P3_reformulado
+Implemente recursivamente em Python a função `fatorial(n)` que retorna o
+produto de todos os inteiros positivos de 1 até n. Para n=0, retorne 1.
+
+# P3_ingles
+Write a recursive Python function called `fatorial` that computes the
+factorial of a non-negative integer n.
+
+# P3_com_ruido
+Estou aprendendo Python e preciso de ajuda com uma função. Aliás, você
+sabia que o fatorial foi inventado por Euler? De qualquer forma, escreva
+uma função chamada `fatorial` que calcula n! de forma recursiva para n >= 0.
+
+# P3_verboso
+Preciso de uma função Python. O nome deve ser `fatorial`. Ela vai receber
+como parâmetro um número inteiro n, onde n é sempre maior ou igual a zero.
+O retorno deve ser o fatorial de n, calculado de forma recursiva. O caso
+base é fatorial(0) = 1 e fatorial(1) = 1. Para n > 1,
+fatorial(n) = n * fatorial(n-1).
+
+# P3_vago
+Função Python `fatorial` recursiva para n >= 0.
+\end{lstlisting}
+
+\begin{lstlisting}[style=python, caption={Prompts — Problema P4 (contar vogais)}]
+# P4_original
+Escreva uma função Python chamada `contar_vogais` que recebe uma string e
+retorna a quantidade de vogais (a, e, i, o, u) presentes nela, ignorando
+maiúsculas e minúsculas.
+
+# P4_reformulado
+Crie em Python a função `contar_vogais` que conta quantas letras vogais
+existem em uma string, sem distinção entre letras maiúsculas e minúsculas.
+
+# P4_ingles
+Write a Python function called `contar_vogais` that counts the number of
+vowels (a, e, i, o, u) in a string, case-insensitive.
+
+# P4_verboso
+Preciso de uma função Python. O nome deve ser `contar_vogais`. Ela vai receber
+como parâmetro uma string qualquer. O retorno deve ser um número inteiro
+representando a quantidade de vogais (apenas a, e, i, o, u) presentes na
+string. A comparação deve ignorar diferenças entre maiúsculas e minúsculas.
+
+# P4_vago
+Função Python `contar_vogais` que conta vogais, ignora maiúsculas.
+
+# P4_com_ruido
+Estou estudando processamento de strings em Python. Por sinal, as vogais
+existem em praticamente todos os idiomas do mundo. De qualquer forma, escreva
+uma função chamada `contar_vogais` que recebe uma string e retorna a quantidade
+de vogais (a, e, i, o, u) presentes, sem distinção entre maiúsculas e minúsculas.
+\end{lstlisting}
+
+\begin{lstlisting}[style=python, caption={Prompts — Problema P5 (dois maiores)}]
+# P5_original
+Escreva uma função Python chamada `dois_maiores` que recebe uma lista de
+inteiros (com pelo menos 2 elementos) e retorna uma tupla com os dois maiores
+valores em ordem decrescente.
+
+# P5_reformulado
+Implemente a função Python `dois_maiores` que, dada uma lista de inteiros,
+encontra os dois elementos de maior valor e os retorna como uma tupla
+(maior, segundo_maior).
+
+# P5_ingles
+Write a Python function called `dois_maiores` that takes a list of integers
+and returns a tuple with the two largest values in descending order.
+
+# P5_verboso
+Preciso de uma função Python. O nome deve ser `dois_maiores`. Ela vai receber
+como parâmetro uma lista de inteiros com pelo menos dois elementos. O retorno
+deve ser uma tupla Python contendo exatamente dois valores: o maior e o segundo
+maior da lista, nessa ordem (do maior para o menor). Pode haver duplicatas.
+
+# P5_vago
+Função Python `dois_maiores` que retorna os dois maiores de uma lista como tupla.
+
+# P5_com_ruido
+Estou treinando algoritmos de ordenação em Python. Aliás, o algoritmo quicksort
+foi inventado por Tony Hoare em 1959. De qualquer forma, escreva uma função
+chamada `dois_maiores` que recebe uma lista de inteiros e retorna uma tupla com
+os dois maiores valores em ordem decrescente.
+\end{lstlisting}
+
+% =============================================================================
+\section{Descrição dos Testes, Experimentos e Ensaios Realizados}
+% =============================================================================
+
+Os experimentos foram estruturados em quatro etapas: preparação, coleta, extração e avaliação.
+
+\subsection{Preparação}
+
+Para cada um dos cinco problemas, o grupo elaborou: (a) variações de \textit{prompt} cobrindo os tipos descritos na Seção~2, e (b) uma bateria de testes unitários Python que serve como critério objetivo de avaliação. Os testes foram escritos \textit{antes} da coleta das respostas dos modelos, evitando viés de confirmação. A Tabela~\ref{tab:testes} apresenta exemplos representativos dos casos de teste.
+
+\begin{table}[H]
+\centering
+\caption{Exemplos de casos de teste unitário por problema}
+\label{tab:testes}
+\begin{tabular}{llll}
+\toprule
+\textbf{Problema} & \textbf{Entrada} & \textbf{Saída esperada} & \textbf{Tipo do caso} \\
+\midrule
+P1 & \texttt{[3,1,4,1,5,9]} & \texttt{9}     & Caso geral \\
+P1 & \texttt{[-3,-1,-5]}    & \texttt{-1}    & Todos negativos \\
+P2 & \texttt{"arara"}       & \texttt{True}  & Palíndromo simples \\
+P2 & \texttt{"Ana"}         & \texttt{True}  & Maiúscula \\
+P2 & \texttt{"python"}      & \texttt{False} & Não palíndromo \\
+P3 & \texttt{0}             & \texttt{1}     & Caso base \\
+P3 & \texttt{10}            & \texttt{3628800} & Caso geral \\
+P4 & \texttt{"AEIOU"}       & \texttt{5}     & Maiúsculas \\
+P4 & \texttt{"bcdfg"}       & \texttt{0}     & Sem vogais \\
+P5 & \texttt{[3,1,4,1,5]}  & \texttt{(5,4)} & Caso geral \\
+P5 & \texttt{[5,5,5]}       & \texttt{(5,5)} & Duplicatas \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Coleta de Respostas}
+
+As respostas foram coletadas via API local do Ollama utilizando o script \texttt{coletar\_respostas.py}. Cada uma das 60 combinações modelo~$\times$~variante de \textit{prompt} foi executada uma vez e a resposta bruta salva em \texttt{generated\_code.json}.
+
+\subsection{Extração de Código}
+
+Antes da avaliação, o script \texttt{extrair\_codigo.py} processou as respostas brutas, separando o código Python do texto em prosa. A extração utilizou as seguintes heurísticas:
+
+\begin{enumerate}
+    \item Remoção de blocos markdown (\texttt{```python ... ```});
+    \item Validação do texto completo via \texttt{ast.parse} — se já era código válido, retornado diretamente;
+    \item Filtragem linha a linha, descartando linhas de prosa sem prefixo de comentário (\texttt{\#});
+    \item Remoção de chamadas a \texttt{print()} e \texttt{input()} no nível do módulo;
+    \item Normalização de indentação (conversão de tabs para 4 espaços).
+\end{enumerate}
+
+Após a extração, 49 dos 60 casos resultaram em código sintaticamente válido. Os 11 casos remanescentes com sintaxe inválida foram registrados como falha irrecuperável — representando situações em que o modelo não conseguiu gerar código executável independentemente de questões de formatação. Todos os casos inválidos pertencem ao \texttt{deepseek-coder}.
+
+\subsection{Avaliação}
+
+O script \texttt{rodar\_testes.py} executou cada código extraído contra a bateria de testes unitários via \texttt{exec()} em \textit{namespace} isolado. Para cada caso, foi verificado se o resultado obtido era igual ao esperado. A taxa de aprovação foi calculada por combinação modelo~$\times$~variante, e a variação entre variantes do mesmo problema foi usada como métrica de consistência.
+
+% =============================================================================
+\section{Apresentação e Análise dos Resultados}
+% =============================================================================
+
+A Tabela~\ref{tab:resultados} consolida as taxas de aprovação obtidas após a extração de código para todas as 60 combinações, bem como a variação entre as seis variantes do mesmo problema.
+
+\begin{table}[H]
+\centering
+\caption{Taxas de aprovação por modelo, problema e variante de \textit{prompt}}
+\label{tab:resultados}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrrrrrl}
+\toprule
+\textbf{Modelo} & \textbf{Prob.} & \textbf{Original} & \textbf{Reformulado} & \textbf{Inglês} & \textbf{Verboso} & \textbf{Vago} & \textbf{Com ruído} & \textbf{Variação} \\
+\midrule
+qwen2.5-coder & P1 & 100\% & 100\% & 100\% & 100\% & 100\% & 100\% & 0pp \\
+qwen2.5-coder & P2 & 100\% & 100\% & 100\% & 100\% & 100\% &  70\% & \textbf{30pp} \\
+qwen2.5-coder & P3 & 100\% & 100\% & 100\% & 100\% & 100\% & 100\% & 0pp \\
+qwen2.5-coder & P4 &  80\% & 100\% &  30\% & 100\% & 100\% & 100\% & \textbf{70pp} \\
+qwen2.5-coder & P5 & 100\% & 100\% &   0\% &   0\% & 100\% &  86\% & \textbf{100pp} \\
+\midrule
+deepseek-coder & P1 & 100\% & 100\% & 100\% &   0\% & 100\% & 100\% & \textbf{100pp} \\
+deepseek-coder & P2 &   0\% &   0\% & 100\% &   0\% & 100\% &   0\% & \textbf{100pp} \\
+deepseek-coder & P3 &   0\% &  25\% & 100\% &   0\% & 100\% &   0\% & \textbf{100pp} \\
+deepseek-coder & P4 &   0\% &   0\% &   0\% &   0\% &   0\% & 100\% & \textbf{100pp} \\
+deepseek-coder & P5 &   0\% &  86\% &   0\% & 100\% &   0\% &   0\% & \textbf{100pp} \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\subsection{qwen2.5-coder — Consistente na Maioria, Instável em Casos Específicos}
+
+O modelo \texttt{qwen2.5-coder} demonstrou consistência perfeita nos problemas P1 e P3, com variação de 0pp em todas as seis formulações. Os problemas P2, P4 e P5 apresentaram instabilidades.
+
+\textbf{P2 — Nova falha identificada com ruído semântico.} Com a cobertura simétrica de variantes, o problema P2 (anteriormente considerado perfeito com variação de 0pp) revelou uma falha no \textit{prompt} \texttt{P2\_com\_ruido}: taxa de aprovação de 70\% e variação de 30pp. O código gerado foi:
+
+\begin{lstlisting}[style=python, caption={Código gerado por qwen2.5-coder para P2\_com\_ruido — normalização de maiúsculas incompleta}]
+def palindromo(s):
+    return s.lower() == s[::-1]
+\end{lstlisting}
+
+O bug é sutil: \texttt{s.lower()} normaliza a string original, mas \texttt{s[::-1]} inverte a string \textit{sem} normalizar. A comparação falha quando o palíndromo contém letras maiúsculas, pois \texttt{"Arara".lower()} é \texttt{"arara"} mas \texttt{"Arara"[::-1]} é \texttt{"ararA"} — strings distintas. Três testes falharam por essa razão (\texttt{"Arara"}, \texttt{"Ana"} e \texttt{"AmanaplanacanalPanama"}). O ruído sobre etimologia do termo no \textit{prompt} parece ter distraído o modelo da especificação completa de normalização.
+
+\textbf{P4 — Variação de 70pp mantida.} A instabilidade do prompt em inglês já documentada se confirmou. O \textit{prompt} \texttt{P4\_ingles} gerou novamente o uso incorreto de \texttt{str.count('aeiou')}, que conta a \textit{substring} inteira em vez de cada vogal individualmente, resultando em 30\% de aprovação. As quatro variantes em português (original, reformulado, verboso, vago, com ruído) obtiveram entre 80\% e 100\%.
+
+\begin{lstlisting}[style=python, caption={Código gerado por qwen2.5-coder para P4\_ingles — erro de semântica da API}]
+def contar_vogais(texto):
+    return texto.lower().count('aeiou')
+\end{lstlisting}
+
+\textbf{P5 — Variação de 100pp com dois prompts falhando.} A expansão de variantes revelou que não apenas o \textit{prompt} em inglês, mas também o \textit{prompt} verboso falham completamente (0\%). O \texttt{P5\_ingles} gerou:
+
+\begin{lstlisting}[style=python, caption={Código gerado por qwen2.5-coder para P5\_ingles — erro de tipo de retorno}]
+def dois_maiores(numbers):
+    return sorted(numbers)[-2:]
+\end{lstlisting}
+
+O código retorna uma \textbf{lista} em vez de uma \textbf{tupla}, em ordem crescente. O \texttt{P5\_verboso}, apesar de especificar explicitamente ``uma tupla Python contendo exatamente dois valores'', gerou:
+
+\begin{lstlisting}[style=python, caption={Código gerado por qwen2.5-coder para P5\_verboso — retorna lista com set (perde duplicatas)}]
+def dois_maiores(nums):
+    sorted_nums = sorted(set(nums))
+    return sorted_nums[-2:]
+\end{lstlisting}
+
+Além de retornar lista, o uso de \texttt{set()} elimina duplicatas, causando falha no caso \texttt{[5,5,5]} que deveria retornar \texttt{(5,5)}. A verbosidade excessiva do enunciado parece ter induzido uma implementação mais elaborada, porém incorreta.
+
+\subsection{deepseek-coder — Instabilidade Estrutural Além do Viés de Idioma}
+
+O \texttt{deepseek-coder} apresentou variação de 100pp em todos os cinco problemas, confirmando alta instabilidade. A expansão para seis variantes permitiu refinar a hipótese de ``viés de idioma'' levantada anteriormente.
+
+\textbf{P1 — Único ponto de falha no verboso.} Contrariando a tendência geral, o \texttt{P1\_verboso} obteve 0\% enquanto todas as demais variantes (inclusive as em português) alcançaram 100\%. Isso mostra que o problema não é simplesmente o idioma: descrições excessivamente detalhadas podem confundir o modelo mesmo em problemas que ele domina.
+
+\textbf{P2 e P3 — Hipótese de viés de idioma parcialmente refutada.} Anteriormente, apenas o \textit{prompt} em inglês obtinha boas taxas nesses problemas. Com a cobertura completa, verificou-se que o \texttt{deepseek-coder} também obtém 100\% no \texttt{P2\_verboso} e 100\% no \texttt{P3\_vago}. Assim, a falha não é simplesmente ``não entender português'', mas sim uma sensibilidade ao estilo específico do enunciado: o modelo responde bem a inglês, a descrições muito detalhadas em português e a enunciados muito concisos, mas falha com formulações padrão.
+
+\textbf{P4 — Falha sistemática com exceção isolada.} Das seis variantes, apenas \texttt{P4\_com\_ruido} obteve 100\%. O código gerado foi:
+
+\begin{lstlisting}[style=python, caption={Código gerado por deepseek-coder para P4\_com\_ruido — único sucesso em P4}]
+def contar_vogais(string):
+    count = 0
+    for char in string.lower():
+        if char == 'a' or char == 'e' or char == 'i' or char == 'o' or char == 'u':
+            count += 1
+    return count
+\end{lstlisting}
+
+A enumeração explícita das vogais no texto do \textit{prompt} (``a, e, i, o, u'') também está presente nos demais prompts de P4, portanto a diferença é mais provável o contexto de ruído semântico que enquadrou o problema de uma forma que favoreceu a implementação correta. As outras cinco variantes resultaram em código sintaticamente inválido ou incompleto.
+
+\textbf{P5 — Dois prompts funcionando, revelando a relevância da avaliação multidimensional.} Com seis variantes, verificou-se que não apenas o \texttt{P5\_reformulado} (85.7\%) funciona, mas também o \texttt{P5\_verboso} (100\%). Isso reforça o argumento de Bommasani et al. \cite{bommasani2023helm}: um único \textit{prompt} poderia levar a conclusões opostas — desde ``o modelo resolve P5 perfeitamente'' (verboso) até ``o modelo não consegue resolver P5'' (original, inglês, vago, com ruído).
+
+\subsection{Classificação dos Tipos de Falha Observados}
+
+A análise qualitativa dos códigos gerados permitiu categorizar as falhas em tipos distintos, conforme a Tabela~\ref{tab:falhas}.
+
+\begin{table}[H]
+\centering
+\caption{Classificação dos tipos de falha por caso}
+\label{tab:falhas}
+\begin{tabular}{lll}
+\toprule
+\textbf{Tipo de falha} & \textbf{Modelo} & \textbf{Casos representativos} \\
+\midrule
+Erro de sintaxe (não executa)       & deepseek-coder & P3\_original, P2\_vago, P3\_verboso \\
+Variável indefinida                 & deepseek-coder & P2\_original \\
+Problema trocado                    & deepseek-coder & P2\_vago (gerou anagrama) \\
+Nome de função incorreto            & deepseek-coder & P2\_reformulado (\texttt{palindrome} vs \texttt{palindromo}) \\
+Código incompleto                   & deepseek-coder & P4\_original, P4\_reformulado \\
+Erro de semântica de API            & qwen2.5-coder  & P4\_ingles (\texttt{str.count} com substring) \\
+Tipo de retorno incorreto           & qwen2.5-coder  & P5\_ingles (lista vs tupla) \\
+Lógica incorreta com \texttt{set()} & qwen2.5-coder  & P5\_verboso (elimina duplicatas) \\
+Normalização de maiúsculas ausente  & qwen2.5-coder  & P2\_com\_ruido (\texttt{s.lower()} sem \texttt{s[::-1].lower()}) \\
+Indentação mista (tabs/espaços)     & deepseek-coder & P3\_com\_ruido \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% =============================================================================
+\section{Limitações, Riscos e Ameaças à Validade}
+% =============================================================================
+
+\subsection{Número de Amostras por Combinação}
+
+Cada combinação modelo~$\times$~variante foi executada apenas uma vez. Modelos de linguagem possuem comportamento estocástico (temperatura $> 0$), de modo que execuções repetidas do mesmo \textit{prompt} poderiam produzir resultados diferentes. Para maior confiabilidade estatística, recomenda-se executar cada combinação pelo menos 5 vezes e reportar média e desvio padrão das taxas de aprovação.
+
+\subsection{Cobertura dos Testes Unitários}
+
+As baterias de testes foram elaboradas manualmente pelo grupo. É possível que existam casos extremos não cobertos que permitiriam que implementações incorretas passassem em todos os testes. Uma abordagem mais robusta envolveria geração automatizada de casos de teste ou uso de ferramentas de \textit{fuzzing}.
+
+\subsection{Escopo dos Problemas}
+
+Os cinco problemas selecionados são simples e algorítmicos. Os resultados obtidos não podem ser generalizados para tarefas mais complexas, como geração de código com múltiplas funções interdependentes, manipulação de estruturas de dados complexas ou integração com bibliotecas externas. A simplicidade dos problemas pode ter favorecido artificialmente o desempenho dos modelos.
+
+\subsection{Variantes de Prompt}
+
+As variações de \textit{prompt} foram elaboradas pelo grupo sem protocolo formal de diversidade linguística. Embora este trabalho aplique seis tipos de variante simetricamente a todos os problemas, os prompts foram construídos manualmente. Trabalhos como PromptRobust \cite{zhu2023promptrobust} utilizam perturbações mais sistemáticas (substituição de caracteres, erros tipográficos, negações) que poderiam revelar fragilidades adicionais não cobertas pelos ensaios realizados.
+
+\subsection{Ausência de Acesso ao Mecanismo Interno}
+
+Conforme estabelecido na situação-problema, a avaliação foi realizada exclusivamente a partir do comportamento observado. Não foi possível inspecionar pesos, mecanismos de atenção ou distribuições de probabilidade internas aos modelos. Isso limita a capacidade explicativa dos resultados — é possível identificar \textit{que} o \texttt{deepseek-coder} falha em prompts em português, mas não \textit{por que} a partir dos experimentos realizados.
+
+\subsection{Execução Única por Modelo}
+
+Os experimentos foram realizados com uma única versão quantizada de cada modelo (versão \texttt{:1.5b} e \texttt{:1.3b}). Versões maiores dos mesmos modelos poderiam apresentar comportamento substancialmente diferente, e os resultados não devem ser interpretados como avaliação definitiva das famílias de modelos, mas apenas das versões específicas testadas.
+
+% =============================================================================
+\bibliographystyle{abntex2-num}
+\bibliography{referencias}
+\end{document}
