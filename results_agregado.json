@@ -1,0 +1,782 @@
+{
+  "qwen2.5-coder|P1_original": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P1_reformulado": {
+    "media": 80.0,
+    "desvio": 44.7,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      0.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P1_ingles": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P1_verboso": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P2_original": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P2_reformulado": {
+    "media": 60.0,
+    "desvio": 54.8,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      0.0,
+      0.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P2_ingles": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P2_vago": {
+    "media": 80.0,
+    "desvio": 44.7,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      0.0
+    ]
+  },
+  "qwen2.5-coder|P3_original": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P3_reformulado": {
+    "media": 80.0,
+    "desvio": 44.7,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      0.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P3_ingles": {
+    "media": 60.0,
+    "desvio": 54.8,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      0.0,
+      0.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P3_com_ruido": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P4_original": {
+    "media": 96.0,
+    "desvio": 8.9,
+    "min": 80.0,
+    "max": 100.0,
+    "runs": [
+      80.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P4_reformulado": {
+    "media": 96.0,
+    "desvio": 8.9,
+    "min": 80.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      80.0
+    ]
+  },
+  "qwen2.5-coder|P4_ingles": {
+    "media": 86.0,
+    "desvio": 31.3,
+    "min": 30.0,
+    "max": 100.0,
+    "runs": [
+      30.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P5_original": {
+    "media": 42.9,
+    "desvio": 52.5,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      0.0,
+      100.0,
+      0.0,
+      14.3
+    ]
+  },
+  "qwen2.5-coder|P5_reformulado": {
+    "media": 37.1,
+    "desvio": 51.1,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      85.7,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "qwen2.5-coder|P5_ingles": {
+    "media": 2.9,
+    "desvio": 6.4,
+    "min": 0.0,
+    "max": 14.3,
+    "runs": [
+      0.0,
+      0.0,
+      0.0,
+      14.3,
+      0.0
+    ]
+  },
+  "qwen2.5-coder|P4_verboso": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P4_vago": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P4_com_ruido": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P5_verboso": {
+    "media": 0.0,
+    "desvio": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "runs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "qwen2.5-coder|P5_vago": {
+    "media": 22.9,
+    "desvio": 43.6,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      14.3,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "qwen2.5-coder|P5_com_ruido": {
+    "media": 20.0,
+    "desvio": 37.2,
+    "min": 0.0,
+    "max": 85.7,
+    "runs": [
+      85.7,
+      0.0,
+      0.0,
+      14.3,
+      0.0
+    ]
+  },
+  "qwen2.5-coder|P1_vago": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P1_com_ruido": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P2_verboso": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P2_com_ruido": {
+    "media": 94.0,
+    "desvio": 13.4,
+    "min": 70.0,
+    "max": 100.0,
+    "runs": [
+      70.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P3_verboso": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "qwen2.5-coder|P3_vago": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "deepseek-coder|P1_original": {
+    "media": 80.0,
+    "desvio": 44.7,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      0.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "deepseek-coder|P1_reformulado": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "deepseek-coder|P1_ingles": {
+    "media": 60.0,
+    "desvio": 54.8,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      0.0,
+      100.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P1_verboso": {
+    "media": 0.0,
+    "desvio": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "runs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P2_original": {
+    "media": 0.0,
+    "desvio": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "runs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P2_reformulado": {
+    "media": 0.0,
+    "desvio": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "runs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P2_ingles": {
+    "media": 20.0,
+    "desvio": 44.7,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P2_vago": {
+    "media": 0.0,
+    "desvio": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "runs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P3_original": {
+    "media": 80.0,
+    "desvio": 44.7,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      0.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "deepseek-coder|P3_reformulado": {
+    "media": 25.0,
+    "desvio": 43.3,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      25.0,
+      0.0,
+      100.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P3_ingles": {
+    "media": 25.0,
+    "desvio": 43.3,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      0.0,
+      25.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P3_com_ruido": {
+    "media": 40.0,
+    "desvio": 54.8,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      0.0,
+      0.0,
+      100.0,
+      0.0,
+      100.0
+    ]
+  },
+  "deepseek-coder|P4_original": {
+    "media": 62.0,
+    "desvio": 41.5,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      0.0,
+      90.0,
+      100.0,
+      80.0,
+      40.0
+    ]
+  },
+  "deepseek-coder|P4_reformulado": {
+    "media": 36.0,
+    "desvio": 49.8,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      0.0,
+      100.0,
+      80.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P4_ingles": {
+    "media": 20.0,
+    "desvio": 44.7,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      0.0,
+      0.0,
+      100.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P5_original": {
+    "media": 0.0,
+    "desvio": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "runs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P5_reformulado": {
+    "media": 17.1,
+    "desvio": 38.3,
+    "min": 0.0,
+    "max": 85.7,
+    "runs": [
+      85.7,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P5_ingles": {
+    "media": 17.1,
+    "desvio": 38.3,
+    "min": 0.0,
+    "max": 85.7,
+    "runs": [
+      0.0,
+      85.7,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P4_verboso": {
+    "media": 32.0,
+    "desvio": 44.4,
+    "min": 0.0,
+    "max": 90.0,
+    "runs": [
+      0.0,
+      90.0,
+      0.0,
+      0.0,
+      70.0
+    ]
+  },
+  "deepseek-coder|P4_vago": {
+    "media": 0.0,
+    "desvio": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "runs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P4_com_ruido": {
+    "media": 60.0,
+    "desvio": 54.8,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      0.0,
+      0.0,
+      100.0,
+      100.0
+    ]
+  },
+  "deepseek-coder|P5_verboso": {
+    "media": 20.0,
+    "desvio": 44.7,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P5_vago": {
+    "media": 0.0,
+    "desvio": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "runs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P5_com_ruido": {
+    "media": 0.0,
+    "desvio": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "runs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P1_vago": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "deepseek-coder|P1_com_ruido": {
+    "media": 100.0,
+    "desvio": 0.0,
+    "min": 100.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0
+    ]
+  },
+  "deepseek-coder|P2_verboso": {
+    "media": 40.0,
+    "desvio": 54.8,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      0.0,
+      0.0,
+      100.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P2_com_ruido": {
+    "media": 0.0,
+    "desvio": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "runs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deepseek-coder|P3_verboso": {
+    "media": 40.0,
+    "desvio": 54.8,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      0.0,
+      100.0,
+      0.0,
+      0.0,
+      100.0
+    ]
+  },
+  "deepseek-coder|P3_vago": {
+    "media": 45.0,
+    "desvio": 51.2,
+    "min": 0.0,
+    "max": 100.0,
+    "runs": [
+      100.0,
+      25.0,
+      100.0,
+      0.0,
+      0.0
+    ]
+  }
+}

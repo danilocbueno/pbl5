@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-02T20:06:28.477620",
+  "run": 4,
   "resultados": [
     {
       "modelo": "qwen2.5-coder",
@@ -481,79 +481,79 @@
       "modelo": "qwen2.5-coder",
       "variante": "P2_reformulado",
       "status": "OK",
-      "aprovados": 10,
+      "aprovados": 0,
       "total": 10,
-      "taxa": 100.0,
+      "taxa": 0.0,
       "detalhes": [
         {
           "caso": 1,
           "args": "['arara']",
           "esperado": "True",
-          "obtido": "True",
-          "passou": true
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 2,
           "args": "['python']",
           "esperado": "False",
-          "obtido": "False",
-          "passou": true
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 3,
           "args": "['AmanaplanacanalPanama']",
           "esperado": "True",
-          "obtido": "True",
-          "passou": true
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 4,
           "args": "['Arara']",
           "esperado": "True",
-          "obtido": "True",
-          "passou": true
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 5,
           "args": "['racecar']",
           "esperado": "True",
-          "obtido": "True",
-          "passou": true
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 6,
           "args": "['hello']",
           "esperado": "False",
-          "obtido": "False",
-          "passou": true
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 7,
           "args": "['']",
           "esperado": "True",
-          "obtido": "True",
-          "passou": true
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 8,
           "args": "['a']",
           "esperado": "True",
-          "obtido": "True",
-          "passou": true
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 9,
           "args": "['ab']",
           "esperado": "False",
-          "obtido": "False",
-          "passou": true
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 10,
           "args": "['Ana']",
           "esperado": "True",
-          "obtido": "True",
-          "passou": true
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         }
       ]
     },
@@ -641,79 +641,79 @@
       "modelo": "qwen2.5-coder",
       "variante": "P2_vago",
       "status": "OK",
-      "aprovados": 0,
+      "aprovados": 10,
       "total": 10,
-      "taxa": 0.0,
+      "taxa": 100.0,
       "detalhes": [
         {
           "caso": 1,
           "args": "['arara']",
           "esperado": "True",
-          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
-          "passou": false
+          "obtido": "True",
+          "passou": true
         },
         {
           "caso": 2,
           "args": "['python']",
           "esperado": "False",
-          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
-          "passou": false
+          "obtido": "False",
+          "passou": true
         },
         {
           "caso": 3,
           "args": "['AmanaplanacanalPanama']",
           "esperado": "True",
-          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
-          "passou": false
+          "obtido": "True",
+          "passou": true
         },
         {
           "caso": 4,
           "args": "['Arara']",
           "esperado": "True",
-          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
-          "passou": false
+          "obtido": "True",
+          "passou": true
         },
         {
           "caso": 5,
           "args": "['racecar']",
           "esperado": "True",
-          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
-          "passou": false
+          "obtido": "True",
+          "passou": true
         },
         {
           "caso": 6,
           "args": "['hello']",
           "esperado": "False",
-          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
-          "passou": false
+          "obtido": "False",
+          "passou": true
         },
         {
           "caso": 7,
           "args": "['']",
           "esperado": "True",
-          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
-          "passou": false
+          "obtido": "True",
+          "passou": true
         },
         {
           "caso": 8,
           "args": "['a']",
           "esperado": "True",
-          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
-          "passou": false
+          "obtido": "True",
+          "passou": true
         },
         {
           "caso": 9,
           "args": "['ab']",
           "esperado": "False",
-          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
-          "passou": false
+          "obtido": "False",
+          "passou": true
         },
         {
           "caso": 10,
           "args": "['Ana']",
           "esperado": "True",
-          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
-          "passou": false
+          "obtido": "True",
+          "passou": true
         }
       ]
     },
@@ -1013,65 +1013,65 @@
       "modelo": "qwen2.5-coder",
       "variante": "P3_ingles",
       "status": "OK",
-      "aprovados": 8,
+      "aprovados": 0,
       "total": 8,
-      "taxa": 100.0,
+      "taxa": 0.0,
       "detalhes": [
         {
           "caso": 1,
           "args": "[0]",
           "esperado": "1",
-          "obtido": "1",
-          "passou": true
+          "obtido": "FUNÇÃO 'fatorial' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 2,
           "args": "[1]",
           "esperado": "1",
-          "obtido": "1",
-          "passou": true
+          "obtido": "FUNÇÃO 'fatorial' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 3,
           "args": "[2]",
           "esperado": "2",
-          "obtido": "2",
-          "passou": true
+          "obtido": "FUNÇÃO 'fatorial' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 4,
           "args": "[3]",
           "esperado": "6",
-          "obtido": "6",
-          "passou": true
+          "obtido": "FUNÇÃO 'fatorial' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 5,
           "args": "[4]",
           "esperado": "24",
-          "obtido": "24",
-          "passou": true
+          "obtido": "FUNÇÃO 'fatorial' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 6,
           "args": "[5]",
           "esperado": "120",
-          "obtido": "120",
-          "passou": true
+          "obtido": "FUNÇÃO 'fatorial' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 7,
           "args": "[10]",
           "esperado": "3628800",
-          "obtido": "3628800",
-          "passou": true
+          "obtido": "FUNÇÃO 'fatorial' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 8,
           "args": "[7]",
           "esperado": "5040",
-          "obtido": "5040",
-          "passou": true
+          "obtido": "FUNÇÃO 'fatorial' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         }
       ]
     },
@@ -1357,9 +1357,9 @@
       "modelo": "qwen2.5-coder",
       "variante": "P4_reformulado",
       "status": "OK",
-      "aprovados": 8,
+      "aprovados": 10,
       "total": 10,
-      "taxa": 80.0,
+      "taxa": 100.0,
       "detalhes": [
         {
           "caso": 1,
@@ -1393,8 +1393,8 @@
           "caso": 5,
           "args": "['AEIOU']",
           "esperado": "5",
-          "obtido": "0",
-          "passou": false
+          "obtido": "5",
+          "passou": true
         },
         {
           "caso": 6,
@@ -1414,8 +1414,8 @@
           "caso": 8,
           "args": "['Unicamp']",
           "esperado": "3",
-          "obtido": "2",
-          "passou": false
+          "obtido": "3",
+          "passou": true
         },
         {
           "caso": 9,
@@ -1757,57 +1757,57 @@
       "modelo": "qwen2.5-coder",
       "variante": "P5_original",
       "status": "OK",
-      "aprovados": 1,
+      "aprovados": 0,
       "total": 7,
-      "taxa": 14.3,
+      "taxa": 0.0,
       "detalhes": [
         {
           "caso": 1,
-          "args": "[[3, 1, 1]]",
+          "args": "[[4, 3, 1, 1]]",
           "esperado": "(5, 4)",
-          "obtido": "(3, 1)",
+          "obtido": "[4, 3]",
           "passou": false
         },
         {
           "caso": 2,
           "args": "[[10]]",
           "esperado": "(20, 10)",
-          "obtido": "ERRO EM EXECUÇÃO: list index out of range\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 412, in run_generated_code\n    resultado = namespace[funcao](*args)\n  File \"<string>\", line 3, in dois_maiores\nIndexError: list index out of range\n",
+          "obtido": "[10]",
           "passou": false
         },
         {
           "caso": 3,
-          "args": "[[-3]]",
+          "args": "[[-2, -3]]",
           "esperado": "(-1, -2)",
-          "obtido": "ERRO EM EXECUÇÃO: list index out of range\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 412, in run_generated_code\n    resultado = namespace[funcao](*args)\n  File \"<string>\", line 3, in dois_maiores\nIndexError: list index out of range\n",
+          "obtido": "[-2, -3]",
           "passou": false
         },
         {
           "caso": 4,
           "args": "[[5, 5]]",
           "esperado": "(5, 5)",
-          "obtido": "(5, 5)",
-          "passou": true
+          "obtido": "[5, 5]",
+          "passou": false
         },
         {
           "caso": 5,
-          "args": "[[3, 2, 1]]",
+          "args": "[[4, 3, 2, 1]]",
           "esperado": "(5, 4)",
-          "obtido": "(3, 2)",
+          "obtido": "[4, 3]",
           "passou": false
         },
         {
           "caso": 6,
-          "args": "[[1]]",
+          "args": "[[50, 1]]",
           "esperado": "(100, 50)",
-          "obtido": "ERRO EM EXECUÇÃO: list index out of range\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 412, in run_generated_code\n    resultado = namespace[funcao](*args)\n  File \"<string>\", line 3, in dois_maiores\nIndexError: list index out of range\n",
+          "obtido": "[50, 1]",
           "passou": false
         },
         {
           "caso": 7,
-          "args": "[[-1]]",
+          "args": "[[0, -1]]",
           "esperado": "(1, 0)",
-          "obtido": "ERRO EM EXECUÇÃO: list index out of range\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 412, in run_generated_code\n    resultado = namespace[funcao](*args)\n  File \"<string>\", line 3, in dois_maiores\nIndexError: list index out of range\n",
+          "obtido": "[0, -1]",
           "passou": false
         }
       ]
@@ -1822,68 +1822,9 @@
       "detalhes": [
         {
           "caso": 1,
-          "args": "[[3, 1, 1]]",
+          "args": "[[4, 3, 1, 1]]",
           "esperado": "(5, 4)",
-          "obtido": "(3, 1)",
-          "passou": false
-        },
-        {
-          "caso": 2,
-          "args": "[[10]]",
-          "esperado": "(20, 10)",
-          "obtido": "None",
-          "passou": false
-        },
-        {
-          "caso": 3,
-          "args": "[[-3]]",
-          "esperado": "(-1, -2)",
-          "obtido": "None",
-          "passou": false
-        },
-        {
-          "caso": 4,
-          "args": "[[5, 5]]",
-          "esperado": "(5, 5)",
-          "obtido": "(5, -inf)",
-          "passou": false
-        },
-        {
-          "caso": 5,
-          "args": "[[3, 2, 1]]",
-          "esperado": "(5, 4)",
-          "obtido": "(3, 2)",
-          "passou": false
-        },
-        {
-          "caso": 6,
-          "args": "[[1]]",
-          "esperado": "(100, 50)",
-          "obtido": "None",
-          "passou": false
-        },
-        {
-          "caso": 7,
-          "args": "[[-1]]",
-          "esperado": "(1, 0)",
-          "obtido": "None",
-          "passou": false
-        }
-      ]
-    },
-    {
-      "modelo": "qwen2.5-coder",
-      "variante": "P5_ingles",
-      "status": "OK",
-      "aprovados": 0,
-      "total": 7,
-      "taxa": 0.0,
-      "detalhes": [
-        {
-          "caso": 1,
-          "args": "[[3, 1, 1]]",
-          "esperado": "(5, 4)",
-          "obtido": "[3, 1]",
+          "obtido": "[4, 3]",
           "passou": false
         },
         {
@@ -1895,9 +1836,9 @@
         },
         {
           "caso": 3,
-          "args": "[[-3]]",
+          "args": "[[-2, -3]]",
           "esperado": "(-1, -2)",
-          "obtido": "[-3]",
+          "obtido": "[-2, -3]",
           "passou": false
         },
         {
@@ -1909,23 +1850,82 @@
         },
         {
           "caso": 5,
-          "args": "[[3, 2, 1]]",
+          "args": "[[4, 3, 2, 1]]",
           "esperado": "(5, 4)",
-          "obtido": "[3, 2]",
+          "obtido": "[4, 3]",
           "passou": false
         },
         {
           "caso": 6,
-          "args": "[[1]]",
+          "args": "[[50, 1]]",
           "esperado": "(100, 50)",
-          "obtido": "[1]",
+          "obtido": "[50, 1]",
           "passou": false
         },
         {
           "caso": 7,
-          "args": "[[-1]]",
+          "args": "[[0, -1]]",
           "esperado": "(1, 0)",
-          "obtido": "[-1]",
+          "obtido": "[0, -1]",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P5_ingles",
+      "status": "OK",
+      "aprovados": 1,
+      "total": 7,
+      "taxa": 14.3,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[4, 3, 1, 1]]",
+          "esperado": "(5, 4)",
+          "obtido": "(4, 3)",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "[[10]]",
+          "esperado": "(20, 10)",
+          "obtido": "ERRO EM EXECUÇÃO: list index out of range\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 412, in run_generated_code\n    resultado = namespace[funcao](*args)\n  File \"<string>\", line 3, in dois_maiores\nIndexError: list index out of range\n",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "[[-2, -3]]",
+          "esperado": "(-1, -2)",
+          "obtido": "(-2, -3)",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "[[5, 5]]",
+          "esperado": "(5, 5)",
+          "obtido": "(5, 5)",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[4, 3, 2, 1]]",
+          "esperado": "(5, 4)",
+          "obtido": "(4, 3)",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "[[50, 1]]",
+          "esperado": "(100, 50)",
+          "obtido": "(50, 1)",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "[[0, -1]]",
+          "esperado": "(1, 0)",
+          "obtido": "(0, -1)",
           "passou": false
         }
       ]
@@ -1940,9 +1940,9 @@
       "detalhes": [
         {
           "caso": 1,
-          "args": "[[3, 1, 1]]",
+          "args": "[[4, 3, 1, 1]]",
           "esperado": "(5, 4)",
-          "obtido": "[3, 1]",
+          "obtido": "[4, 3]",
           "passou": false
         },
         {
@@ -1954,37 +1954,37 @@
         },
         {
           "caso": 3,
-          "args": "[[-3]]",
+          "args": "[[-2, -3]]",
           "esperado": "(-1, -2)",
-          "obtido": "[-3]",
+          "obtido": "[-2, -3]",
           "passou": false
         },
         {
           "caso": 4,
           "args": "[[5, 5]]",
           "esperado": "(5, 5)",
-          "obtido": "[5, 5]",
+          "obtido": "[5]",
           "passou": false
         },
         {
           "caso": 5,
-          "args": "[[3, 2, 1]]",
+          "args": "[[4, 3, 2, 1]]",
           "esperado": "(5, 4)",
-          "obtido": "[3, 2]",
+          "obtido": "[4, 3]",
           "passou": false
         },
         {
           "caso": 6,
-          "args": "[[1]]",
+          "args": "[[50, 1]]",
           "esperado": "(100, 50)",
-          "obtido": "[1]",
+          "obtido": "[50, 1]",
           "passou": false
         },
         {
           "caso": 7,
-          "args": "[[-1]]",
+          "args": "[[0, -1]]",
           "esperado": "(1, 0)",
-          "obtido": "[-1]",
+          "obtido": "[0, -1]",
           "passou": false
         }
       ]
@@ -1999,68 +1999,9 @@
       "detalhes": [
         {
           "caso": 1,
-          "args": "[[3, 1, 1]]",
+          "args": "[[4, 3, 1, 1]]",
           "esperado": "(5, 4)",
-          "obtido": "(1, 3)",
-          "passou": false
-        },
-        {
-          "caso": 2,
-          "args": "[[10]]",
-          "esperado": "(20, 10)",
-          "obtido": "(10,)",
-          "passou": false
-        },
-        {
-          "caso": 3,
-          "args": "[[-3]]",
-          "esperado": "(-1, -2)",
-          "obtido": "(-3,)",
-          "passou": false
-        },
-        {
-          "caso": 4,
-          "args": "[[5, 5]]",
-          "esperado": "(5, 5)",
-          "obtido": "(5,)",
-          "passou": false
-        },
-        {
-          "caso": 5,
-          "args": "[[3, 2, 1]]",
-          "esperado": "(5, 4)",
-          "obtido": "(2, 3)",
-          "passou": false
-        },
-        {
-          "caso": 6,
-          "args": "[[1]]",
-          "esperado": "(100, 50)",
-          "obtido": "(1,)",
-          "passou": false
-        },
-        {
-          "caso": 7,
-          "args": "[[-1]]",
-          "esperado": "(1, 0)",
-          "obtido": "(-1,)",
-          "passou": false
-        }
-      ]
-    },
-    {
-      "modelo": "qwen2.5-coder",
-      "variante": "P5_com_ruido",
-      "status": "OK",
-      "aprovados": 0,
-      "total": 7,
-      "taxa": 0.0,
-      "detalhes": [
-        {
-          "caso": 1,
-          "args": "[[3, 1, 1]]",
-          "esperado": "(5, 4)",
-          "obtido": "[3, 1]",
+          "obtido": "[3, 4]",
           "passou": false
         },
         {
@@ -2072,37 +2013,96 @@
         },
         {
           "caso": 3,
-          "args": "[[-3]]",
+          "args": "[[-2, -3]]",
           "esperado": "(-1, -2)",
-          "obtido": "[-3]",
+          "obtido": "[-3, -2]",
           "passou": false
         },
         {
           "caso": 4,
           "args": "[[5, 5]]",
           "esperado": "(5, 5)",
-          "obtido": "[5]",
+          "obtido": "[5, 5]",
           "passou": false
         },
         {
           "caso": 5,
-          "args": "[[3, 2, 1]]",
+          "args": "[[4, 3, 2, 1]]",
           "esperado": "(5, 4)",
-          "obtido": "[3, 2]",
+          "obtido": "[3, 4]",
           "passou": false
         },
         {
           "caso": 6,
-          "args": "[[1]]",
+          "args": "[[50, 1]]",
           "esperado": "(100, 50)",
-          "obtido": "[1]",
+          "obtido": "[1, 50]",
           "passou": false
         },
         {
           "caso": 7,
-          "args": "[[-1]]",
+          "args": "[[0, -1]]",
           "esperado": "(1, 0)",
-          "obtido": "[-1]",
+          "obtido": "[-1, 0]",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P5_com_ruido",
+      "status": "OK",
+      "aprovados": 1,
+      "total": 7,
+      "taxa": 14.3,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[4, 3, 1, 1]]",
+          "esperado": "(5, 4)",
+          "obtido": "(3, 4)",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "[[10]]",
+          "esperado": "(20, 10)",
+          "obtido": "(10,)",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "[[-2, -3]]",
+          "esperado": "(-1, -2)",
+          "obtido": "(-3, -2)",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "[[5, 5]]",
+          "esperado": "(5, 5)",
+          "obtido": "(5, 5)",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[4, 3, 2, 1]]",
+          "esperado": "(5, 4)",
+          "obtido": "(3, 4)",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "[[50, 1]]",
+          "esperado": "(100, 50)",
+          "obtido": "(1, 50)",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "[[0, -1]]",
+          "esperado": "(1, 0)",
+          "obtido": "(-1, 0)",
           "passou": false
         }
       ]
@@ -2242,11 +2242,68 @@
     {
       "modelo": "deepseek-coder",
       "variante": "P1_ingles",
-      "status": "SEM_CODIGO",
-      "aprovados": 0,
+      "status": "OK",
+      "aprovados": 8,
       "total": 8,
-      "taxa": 0.0,
-      "detalhes": []
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5, 9, 2, 6]]",
+          "esperado": "9",
+          "obtido": "9",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[1]]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-3, -1, -4, -1, -5]]",
+          "esperado": "-1",
+          "obtido": "-1",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[0, 0, 0]]",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[100, 200, 150]]",
+          "esperado": "200",
+          "obtido": "200",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[-10, 0, 10]]",
+          "esperado": "10",
+          "obtido": "10",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[42]]",
+          "esperado": "42",
+          "obtido": "42",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[[7, 7, 7, 7]]",
+          "esperado": "7",
+          "obtido": "7",
+          "passou": true
+        }
+      ]
     },
     {
       "modelo": "deepseek-coder",
@@ -2529,20 +2586,162 @@
     {
       "modelo": "deepseek-coder",
       "variante": "P2_reformulado",
-      "status": "SEM_CODIGO",
+      "status": "OK",
       "aprovados": 0,
       "total": 10,
       "taxa": 0.0,
-      "detalhes": []
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        }
+      ]
     },
     {
       "modelo": "deepseek-coder",
       "variante": "P2_ingles",
-      "status": "SEM_CODIGO",
+      "status": "OK",
       "aprovados": 0,
       "total": 10,
       "taxa": 0.0,
-      "detalhes": []
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        }
+      ]
     },
     {
       "modelo": "deepseek-coder",
@@ -2627,11 +2826,82 @@
     {
       "modelo": "deepseek-coder",
       "variante": "P2_verboso",
-      "status": "SEM_CODIGO",
-      "aprovados": 0,
+      "status": "OK",
+      "aprovados": 10,
       "total": 10,
-      "taxa": 0.0,
-      "detalhes": []
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        }
+      ]
     },
     {
       "modelo": "deepseek-coder",
@@ -2782,11 +3052,54 @@
     {
       "modelo": "deepseek-coder",
       "variante": "P3_reformulado",
-      "status": "SEM_CODIGO",
+      "status": "OK",
       "aprovados": 0,
       "total": 8,
       "taxa": 0.0,
-      "detalhes": []
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[0]",
+          "esperado": "1",
+          "obtido": "Por favor informe número positivo",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "[1]",
+          "esperado": "1",
+          "obtido": "Por favor informe outros valores",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "[2]",
+          "esperado": "2",
+          "obtido": "Por favor informe outros valoresPor favor informe outros valores",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "[3]",
+          "esperado": "6",
+          "obtido": "Por favor informe outros valoresPor favor informe outros valoresPor favor informe outros valoresPor favor informe outros valoresPor favor informe outros valoresPor favor informe outros valores",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "[4]",
+          "esperado": "24",
+          "obtido": "Por favor informe outros valoresPor favor informe outros valores",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "[10]",
+          "esperado": "3628800",
+          "obtido": "Por favor informe outros valoresPor favor informe outros valores",
+          "passou": false
+        }
+      ]
     },
     {
       "modelo": "deepseek-coder",
@@ -2800,134 +3113,20 @@
     {
       "modelo": "deepseek-coder",
       "variante": "P3_com_ruido",
-      "status": "OK",
-      "aprovados": 8,
+      "status": "SEM_CODIGO",
+      "aprovados": 0,
       "total": 8,
-      "taxa": 100.0,
-      "detalhes": [
-        {
-          "caso": 1,
-          "args": "[0]",
-          "esperado": "1",
-          "obtido": "1",
-          "passou": true
-        },
-        {
-          "caso": 2,
-          "args": "[1]",
-          "esperado": "1",
-          "obtido": "1",
-          "passou": true
-        },
-        {
-          "caso": 3,
-          "args": "[2]",
-          "esperado": "2",
-          "obtido": "2",
-          "passou": true
-        },
-        {
-          "caso": 4,
-          "args": "[3]",
-          "esperado": "6",
-          "obtido": "6",
-          "passou": true
-        },
-        {
-          "caso": 5,
-          "args": "[4]",
-          "esperado": "24",
-          "obtido": "24",
-          "passou": true
-        },
-        {
-          "caso": 6,
-          "args": "[5]",
-          "esperado": "120",
-          "obtido": "120",
-          "passou": true
-        },
-        {
-          "caso": 7,
-          "args": "[10]",
-          "esperado": "3628800",
-          "obtido": "3628800",
-          "passou": true
-        },
-        {
-          "caso": 8,
-          "args": "[7]",
-          "esperado": "5040",
-          "obtido": "5040",
-          "passou": true
-        }
-      ]
+      "taxa": 0.0,
+      "detalhes": []
     },
     {
       "modelo": "deepseek-coder",
       "variante": "P3_verboso",
-      "status": "OK",
-      "aprovados": 8,
+      "status": "SEM_CODIGO",
+      "aprovados": 0,
       "total": 8,
-      "taxa": 100.0,
-      "detalhes": [
-        {
-          "caso": 1,
-          "args": "[0]",
-          "esperado": "1",
-          "obtido": "1",
-          "passou": true
-        },
-        {
-          "caso": 2,
-          "args": "[1]",
-          "esperado": "1",
-          "obtido": "1",
-          "passou": true
-        },
-        {
-          "caso": 3,
-          "args": "[2]",
-          "esperado": "2",
-          "obtido": "2",
-          "passou": true
-        },
-        {
-          "caso": 4,
-          "args": "[3]",
-          "esperado": "6",
-          "obtido": "6",
-          "passou": true
-        },
-        {
-          "caso": 5,
-          "args": "[4]",
-          "esperado": "24",
-          "obtido": "24",
-          "passou": true
-        },
-        {
-          "caso": 6,
-          "args": "[5]",
-          "esperado": "120",
-          "obtido": "120",
-          "passou": true
-        },
-        {
-          "caso": 7,
-          "args": "[10]",
-          "esperado": "3628800",
-          "obtido": "3628800",
-          "passou": true
-        },
-        {
-          "caso": 8,
-          "args": "[7]",
-          "esperado": "5040",
-          "obtido": "5040",
-          "passou": true
-        }
-      ]
+      "taxa": 0.0,
+      "detalhes": []
     },
     {
       "modelo": "deepseek-coder",
@@ -2942,30 +3141,30 @@
       "modelo": "deepseek-coder",
       "variante": "P4_original",
       "status": "OK",
-      "aprovados": 4,
+      "aprovados": 8,
       "total": 10,
-      "taxa": 40.0,
+      "taxa": 80.0,
       "detalhes": [
         {
           "caso": 1,
           "args": "['hello']",
           "esperado": "2",
-          "obtido": "0",
-          "passou": false
+          "obtido": "2",
+          "passou": true
         },
         {
           "caso": 2,
           "args": "['python']",
           "esperado": "1",
-          "obtido": "0",
-          "passou": false
+          "obtido": "1",
+          "passou": true
         },
         {
           "caso": 3,
           "args": "['aeiou']",
           "esperado": "5",
-          "obtido": "0",
-          "passou": false
+          "obtido": "5",
+          "passou": true
         },
         {
           "caso": 4,
@@ -2978,15 +3177,15 @@
           "caso": 5,
           "args": "['AEIOU']",
           "esperado": "5",
-          "obtido": "5",
-          "passou": true
+          "obtido": "0",
+          "passou": false
         },
         {
           "caso": 6,
           "args": "['Hello World']",
           "esperado": "3",
-          "obtido": "0",
-          "passou": false
+          "obtido": "3",
+          "passou": true
         },
         {
           "caso": 7,
@@ -2999,15 +3198,15 @@
           "caso": 8,
           "args": "['Unicamp']",
           "esperado": "3",
-          "obtido": "1",
+          "obtido": "2",
           "passou": false
         },
         {
           "caso": 9,
           "args": "['a']",
           "esperado": "1",
-          "obtido": "0",
-          "passou": false
+          "obtido": "1",
+          "passou": true
         },
         {
           "caso": 10,
@@ -3039,91 +3238,91 @@
     {
       "modelo": "deepseek-coder",
       "variante": "P4_verboso",
-      "status": "OK",
-      "aprovados": 7,
+      "status": "SEM_CODIGO",
+      "aprovados": 0,
       "total": 10,
-      "taxa": 70.0,
+      "taxa": 0.0,
+      "detalhes": []
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P4_vago",
+      "status": "OK",
+      "aprovados": 0,
+      "total": 10,
+      "taxa": 0.0,
       "detalhes": [
         {
           "caso": 1,
           "args": "['hello']",
           "esperado": "2",
-          "obtido": "2",
-          "passou": true
+          "obtido": "FUNÇÃO 'contar_vogais' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 2,
           "args": "['python']",
           "esperado": "1",
-          "obtido": "1",
-          "passou": true
+          "obtido": "FUNÇÃO 'contar_vogais' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 3,
           "args": "['aeiou']",
           "esperado": "5",
-          "obtido": "5",
-          "passou": true
+          "obtido": "FUNÇÃO 'contar_vogais' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 4,
           "args": "['bcdfg']",
           "esperado": "0",
-          "obtido": "0",
-          "passou": true
+          "obtido": "FUNÇÃO 'contar_vogais' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 5,
           "args": "['AEIOU']",
           "esperado": "5",
-          "obtido": "0",
+          "obtido": "FUNÇÃO 'contar_vogais' NÃO ENCONTRADA NO CÓDIGO GERADO",
           "passou": false
         },
         {
           "caso": 6,
           "args": "['Hello World']",
           "esperado": "3",
-          "obtido": "2",
+          "obtido": "FUNÇÃO 'contar_vogais' NÃO ENCONTRADA NO CÓDIGO GERADO",
           "passou": false
         },
         {
           "caso": 7,
           "args": "['']",
           "esperado": "0",
-          "obtido": "0",
-          "passou": true
+          "obtido": "FUNÇÃO 'contar_vogais' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 8,
           "args": "['Unicamp']",
           "esperado": "3",
-          "obtido": "2",
+          "obtido": "FUNÇÃO 'contar_vogais' NÃO ENCONTRADA NO CÓDIGO GERADO",
           "passou": false
         },
         {
           "caso": 9,
           "args": "['a']",
           "esperado": "1",
-          "obtido": "1",
-          "passou": true
+          "obtido": "FUNÇÃO 'contar_vogais' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         },
         {
           "caso": 10,
           "args": "['xyz']",
           "esperado": "0",
-          "obtido": "0",
-          "passou": true
+          "obtido": "FUNÇÃO 'contar_vogais' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
         }
       ]
-    },
-    {
-      "modelo": "deepseek-coder",
-      "variante": "P4_vago",
-      "status": "SEM_CODIGO",
-      "aprovados": 0,
-      "total": 10,
-      "taxa": 0.0,
-      "detalhes": []
     },
     {
       "modelo": "deepseek-coder",
@@ -3208,11 +3407,61 @@
     {
       "modelo": "deepseek-coder",
       "variante": "P5_original",
-      "status": "SEM_CODIGO",
+      "status": "OK",
       "aprovados": 0,
       "total": 7,
       "taxa": 0.0,
-      "detalhes": []
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[4, 3, 1, 1]]",
+          "esperado": "(5, 4)",
+          "obtido": "(4, 3)",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "[[10]]",
+          "esperado": "(20, 10)",
+          "obtido": "None",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "[[-2, -3]]",
+          "esperado": "(-1, -2)",
+          "obtido": "(-2, -3)",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "[[5, 5]]",
+          "esperado": "(5, 5)",
+          "obtido": "None",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "[[4, 3, 2, 1]]",
+          "esperado": "(5, 4)",
+          "obtido": "(4, 3)",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "[[50, 1]]",
+          "esperado": "(100, 50)",
+          "obtido": "(50, 1)",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "[[0, -1]]",
+          "esperado": "(1, 0)",
+          "obtido": "(0, -1)",
+          "passou": false
+        }
+      ]
     },
     {
       "modelo": "deepseek-coder",
@@ -3226,49 +3475,49 @@
           "caso": 1,
           "args": "[[3, 1, 1]]",
           "esperado": "(5, 4)",
-          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "obtido": "(3, 3)",
           "passou": false
         },
         {
           "caso": 2,
           "args": "[[10]]",
           "esperado": "(20, 10)",
-          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "obtido": "ERRO EM EXECUÇÃO: A lista precisa ter pelo menos dois números distintos\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 412, in run_generated_code\n    resultado = namespace[funcao](*args)\n  File \"<string>\", line 3, in dois_maiores\nValueError: A lista precisa ter pelo menos dois números distintos\n",
           "passou": false
         },
         {
           "caso": 3,
           "args": "[[-3]]",
           "esperado": "(-1, -2)",
-          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "obtido": "(-3, -3)",
           "passou": false
         },
         {
           "caso": 4,
           "args": "[[5, 5]]",
           "esperado": "(5, 5)",
-          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "obtido": "ERRO EM EXECUÇÃO: A lista precisa ter pelo menos dois números distintos\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 412, in run_generated_code\n    resultado = namespace[funcao](*args)\n  File \"<string>\", line 3, in dois_maiores\nValueError: A lista precisa ter pelo menos dois números distintos\n",
           "passou": false
         },
         {
           "caso": 5,
           "args": "[[3, 2, 1]]",
           "esperado": "(5, 4)",
-          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "obtido": "(3, 3)",
           "passou": false
         },
         {
           "caso": 6,
           "args": "[[1]]",
           "esperado": "(100, 50)",
-          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "obtido": "(1, 1)",
           "passou": false
         },
         {
           "caso": 7,
           "args": "[[-1]]",
           "esperado": "(1, 0)",
-          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "obtido": "(-1, -1)",
           "passou": false
         }
       ]
@@ -3292,42 +3541,42 @@
           "caso": 2,
           "args": "[[10]]",
           "esperado": "(20, 10)",
-          "obtido": "[]",
+          "obtido": "[10]",
           "passou": false
         },
         {
           "caso": 3,
           "args": "[[-3]]",
           "esperado": "(-1, -2)",
-          "obtido": "[]",
+          "obtido": "[-3]",
           "passou": false
         },
         {
           "caso": 4,
           "args": "[[5, 5]]",
           "esperado": "(5, 5)",
-          "obtido": "[]",
+          "obtido": "[5]",
           "passou": false
         },
         {
           "caso": 5,
           "args": "[[3, 2, 1]]",
           "esperado": "(5, 4)",
-          "obtido": "[1]",
+          "obtido": "[2, 1]",
           "passou": false
         },
         {
           "caso": 6,
           "args": "[[1]]",
           "esperado": "(100, 50)",
-          "obtido": "[]",
+          "obtido": "[1]",
           "passou": false
         },
         {
           "caso": 7,
           "args": "[[-1]]",
           "esperado": "(1, 0)",
-          "obtido": "[]",
+          "obtido": "[-1]",
           "passou": false
         }
       ]
@@ -3335,15 +3584,6 @@
     {
       "modelo": "deepseek-coder",
       "variante": "P5_verboso",
-      "status": "SEM_CODIGO",
-      "aprovados": 0,
-      "total": 7,
-      "taxa": 0.0,
-      "detalhes": []
-    },
-    {
-      "modelo": "deepseek-coder",
-      "variante": "P5_vago",
       "status": "OK",
       "aprovados": 0,
       "total": 7,
@@ -3399,6 +3639,15 @@
           "passou": false
         }
       ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P5_vago",
+      "status": "SEM_CODIGO",
+      "aprovados": 0,
+      "total": 7,
+      "taxa": 0.0,
+      "detalhes": []
     },
     {
       "modelo": "deepseek-coder",

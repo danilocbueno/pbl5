@@ -44,6 +44,9 @@ def chamar_ollama(modelo: str, prompt: str) -> str:
         "model": modelo,
         "prompt": f"{SYSTEM_PROMPT}\n\n{prompt}",
         "stream": False,
+        "options": {
+            "temperature": 0.0
+        },
     }).encode("utf-8")
 
     req = urllib.request.Request(

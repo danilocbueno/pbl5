@@ -369,11 +369,13 @@ O script \texttt{rodar\_testes.py} executou cada código extraído contra a bate
 \section{Apresentação e Análise dos Resultados}
 % =============================================================================
 
-A Tabela~\ref{tab:resultados} consolida as taxas de aprovação obtidas após a extração de código para todas as 60 combinações, bem como a variação entre as seis variantes do mesmo problema.
+Foram realizados dois experimentos com as mesmas 60 combinações modelo~$\times$~variante: um com temperatura padrão do Ollama (estocástico, representa o uso típico) e um com temperatura zero (determinístico, garante reprodutibilidade). A comparação entre os dois permite distinguir falhas estruturais — presentes independentemente da aleatoriedade — de falhas estocásticas, que dependem do acaso na amostragem do modelo.
+
+A Tabela~\ref{tab:resultados} consolida as taxas do primeiro experimento (temperatura padrão), e a Tabela~\ref{tab:resultados_t0} os resultados do segundo (temperatura zero).
 
 \begin{table}[H]
 \centering
-\caption{Taxas de aprovação por modelo, problema e variante de \textit{prompt}}
+\caption{Taxas de aprovação — temperatura padrão (estocástico)}
 \label{tab:resultados}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{llrrrrrrl}
@@ -396,7 +398,7 @@ deepseek-coder & P5 &   0\% &  86\% &   0\% & 100\% &   0\% &   0\% & \textbf{10
 }
 \end{table}
 
-\subsection{qwen2.5-coder — Consistente na Maioria, Instável em Casos Específicos}
+\subsection{Temperatura Padrão — qwen2.5-coder}
 
 O modelo \texttt{qwen2.5-coder} demonstrou consistência perfeita nos problemas P1 e P3, com variação de 0pp em todas as seis formulações. Os problemas P2, P4 e P5 apresentaram instabilidades.
 
@@ -433,7 +435,7 @@ def dois_maiores(nums):
 
 Além de retornar lista, o uso de \texttt{set()} elimina duplicatas, causando falha no caso \texttt{[5,5,5]} que deveria retornar \texttt{(5,5)}. A verbosidade excessiva do enunciado parece ter induzido uma implementação mais elaborada, porém incorreta.
 
-\subsection{deepseek-coder — Instabilidade Estrutural Além do Viés de Idioma}
+\subsection{Temperatura Padrão — deepseek-coder}
 
 O \texttt{deepseek-coder} apresentou variação de 100pp em todos os cinco problemas, confirmando alta instabilidade. A expansão para seis variantes permitiu refinar a hipótese de ``viés de idioma'' levantada anteriormente.
 
@@ -458,28 +460,141 @@ Vale notar que a enumeração explícita das vogais (``a, e, i, o, u'') está pr
 
 \subsection{Classificação dos Tipos de Falha Observados}
 
-A análise qualitativa dos códigos gerados permitiu categorizar as falhas em tipos distintos, conforme a Tabela~\ref{tab:falhas}.
+A análise qualitativa dos códigos gerados, combinando os dois experimentos, permitiu categorizar as falhas conforme a Tabela~\ref{tab:falhas}. A coluna \textit{Natureza} indica se a falha é estrutural (presente em ambos os experimentos) ou estocástica (observada apenas com temperatura padrão).
 
 \begin{table}[H]
 \centering
+\small
 \caption{Classificação dos tipos de falha por caso}
 \label{tab:falhas}
-\begin{tabular}{lll}
+\begin{tabular}{llll}
 \toprule
-\textbf{Tipo de falha} & \textbf{Modelo} & \textbf{Casos representativos} \\
+\textbf{Tipo de falha} & \textbf{Modelo} & \textbf{Casos representativos} & \textbf{Natureza} \\
 \midrule
-Erro de sintaxe (não executa)       & deepseek-coder & P3\_original, P2\_vago, P3\_verboso \\
-Variável indefinida                 & deepseek-coder & P2\_original \\
-Nome de função incorreto            & deepseek-coder & P2\_reformulado (\texttt{palindrome} vs \texttt{palindromo}) \\
-Código incompleto                   & deepseek-coder & P4\_original, P4\_reformulado \\
-Erro de semântica de API            & qwen2.5-coder  & P4\_ingles (\texttt{str.count} com substring) \\
-Tipo de retorno incorreto           & qwen2.5-coder  & P5\_ingles (lista vs tupla) \\
-Lógica incorreta com \texttt{set()} & qwen2.5-coder  & P5\_verboso (elimina duplicatas) \\
-Normalização de maiúsculas ausente  & qwen2.5-coder  & P2\_com\_ruido (\texttt{s.lower()} sem \texttt{s[::-1].lower()}) \\
-Indentação mista (tabs/espaços)     & deepseek-coder & P3\_com\_ruido \\
+Erro de sintaxe (não executa)         & deepseek-coder & P2\_vago, P3\_verboso        & Estrutural \\
+Nome de função incorreto              & deepseek-coder & P2\_reformulado (\texttt{palindrome})  & Estrutural \\
+Problema trocado                      & deepseek-coder & P4\_reformulado (gerou contador de consoantes) & Estrutural \\
+Tipo de retorno incorreto             & qwen2.5-coder  & P5\_verboso (lista vs tupla) & Estrutural \\
+Ordenação incorreta                   & qwen2.5-coder  & P5\_original (crescente vs decrescente) & Estrutural \\
+Lógica incorreta com \texttt{set()}   & qwen2.5-coder  & P5\_vago (elimina duplicatas) & Estrutural \\
+Normalização de maiúsculas ausente    & deepseek-coder & P2\_ingles/verboso (\texttt{s == s[::-1]}) & Estrutural \\
+Erro de semântica de API              & qwen2.5-coder  & P4\_ingles (\texttt{str.count} com substring) & Estocástica \\
+Normalização parcial                  & qwen2.5-coder  & P2\_com\_ruido (\texttt{s.lower()} sem \texttt{s[::-1].lower()}) & Estocástica \\
+Caso base incorreto em recursão       & deepseek-coder & P3\_ingles (\texttt{return n} em vez de \texttt{return 1}) & Estrutural \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\subsection{Experimento com Temperatura Zero}
+
+O segundo experimento foi conduzido com \texttt{temperature=0}, que desabilita a amostragem estocástica e faz o modelo sempre escolher o token de maior probabilidade. Com essa configuração, o mesmo prompt executado múltiplas vezes produz exatamente o mesmo código, tornando os resultados reproduzíveis ao bit. A Tabela~\ref{tab:resultados_t0} apresenta os resultados obtidos.
+
+\begin{table}[H]
+\centering
+\caption{Taxas de aprovação — temperatura zero (determinístico)}
+\label{tab:resultados_t0}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrrrrrl}
+\toprule
+\textbf{Modelo} & \textbf{Prob.} & \textbf{Original} & \textbf{Reformulado} & \textbf{Inglês} & \textbf{Verboso} & \textbf{Vago} & \textbf{Com ruído} & \textbf{Variação} \\
+\midrule
+qwen2.5-coder & P1 & 100\% & 100\% & 100\% & 100\% & 100\% & 100\% & 0pp \\
+qwen2.5-coder & P2 & 100\% & 100\% & 100\% & 100\% & 100\% & 100\% & 0pp \\
+qwen2.5-coder & P3 & 100\% & 100\% & 100\% & 100\% & 100\% & 100\% & 0pp \\
+qwen2.5-coder & P4 & 100\% & 100\% & 100\% & 100\% & 100\% & 100\% & 0pp \\
+qwen2.5-coder & P5 &  14\% & 100\% & 100\% &   0\% &   0\% & 100\% & \textbf{100pp} \\
+\midrule
+deepseek-coder & P1 & 100\% & 100\% & 100\% &   0\% & 100\% & 100\% & \textbf{100pp} \\
+deepseek-coder & P2 &   0\% &   0\% &  70\% &   0\% &  70\% &   0\% & \textbf{70pp} \\
+deepseek-coder & P3 & 100\% & 100\% &  88\% &   0\% & 100\% &   0\% & \textbf{100pp} \\
+deepseek-coder & P4 & 100\% &   0\% & 100\% & 100\% &   0\% &   0\% & \textbf{100pp} \\
+deepseek-coder & P5 &  71\% &   0\% &  86\% &  86\% &   0\% &   0\% & \textbf{86pp} \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\textbf{qwen2.5-coder com temperatura zero.} O resultado mais significativo é que P1, P2, P3 e P4 atingem 0pp de variação — consistência perfeita em 24 das 30 combinações. As falhas de temperatura padrão em P4\_ingles (\texttt{str.count}) e P2\_com\_ruido (normalização incompleta) desaparecem completamente: com amostragem determinística, o modelo gera implementações corretas nesses casos. P5 permanece a única instabilidade estrutural, porém com padrão diferente do experimento anterior — três variantes geram código correto (reformulado, inglês, com ruído), enquanto as outras três falham cada uma com um bug distinto:
+
+\begin{lstlisting}[style=python, caption={Falhas de qwen2.5-coder em P5 com temperatura zero}]
+# P5_original — tupla correta, mas ordem crescente (14% = 1/7)
+def dois_maiores(nums):
+    return tuple(sorted(nums)[-2:])
+
+# P5_verboso — ordem correta, mas retorna lista (0%)
+def dois_maiores(nums):
+    nums.sort(reverse=True)
+    return nums[:2]
+
+# P5_vago — usa set() e ordem crescente (0%)
+def dois_maiores(lista):
+    return tuple(sorted(set(lista))[-2:])
+\end{lstlisting}
+
+\textbf{deepseek-coder com temperatura zero.} Os resultados mudam substancialmente em relação ao experimento anterior, confirmando alta sensibilidade à temperatura. Os principais achados são:
+
+\begin{itemize}
+    \item \textbf{P3 melhora significativamente:} P3\_original e P3\_reformulado atingem 100\% — prompts em português que antes geravam código com erros de sintaxe agora produzem implementações corretas. P3\_ingles cai levemente para 88\% por um bug sutil: o caso base retorna \texttt{n} em vez de \texttt{1}, fazendo \texttt{fatorial(0) = 0} em vez de \texttt{1}.
+    \item \textbf{P4 muda completamente:} P4\_original, P4\_ingles e P4\_verboso atingem 100\% (eram 0\% antes). O destaque negativo é P4\_reformulado, que gera uma função chamada \texttt{count\_consonants} contando \textit{consoantes} em vez de vogais — um caso extremo de ``problema trocado'', com a lógica completamente invertida.
+    \item \textbf{P2 nunca atinge 100\%:} P2\_ingles e P2\_verboso alcançam apenas 70\% pois ambos geram \texttt{return s == s[::-1]}, que ignora normalização de maiúsculas e espaços — a mesma classe de bug observada no qwen com temperatura padrão. Os demais prompts de P2 ficam em 0\%.
+    \item \textbf{P4\_com\_ruido cai de 100\% para 0\%:} O único sucesso de P4 no experimento anterior era estocástico.
+\end{itemize}
+
+\subsection{Falhas Estruturais versus Estocásticas}
+
+A comparação entre os dois experimentos permite classificar as falhas observadas em duas categorias:
+
+\textbf{Falhas estruturais} persistem independentemente da temperatura, indicando uma limitação genuína do modelo para aquele prompt. Para o \texttt{qwen2.5-coder}, a única falha estrutural identificada é P5 — os prompts verboso e vago consistentemente induzem bugs (tipo de retorno errado ou uso de \texttt{set()}), ainda que os bugs específicos gerados variem entre temperaturas. Para o \texttt{deepseek-coder}, P1\_verboso e P2\_vago produzem código inválido em ambos os experimentos, e P2 nunca atinge 100\% em nenhuma variante.
+
+\textbf{Falhas estocásticas} aparecem apenas com temperatura padrão e desaparecem com temperatura zero — ou o contrário. São resultado de amostragem probabilística que eventualmente seleciona tokens de um caminho incorreto. Os exemplos mais claros são: P4\_ingles do qwen (str.count com temperatura padrão, loop correto com temperatura zero), P2\_com\_ruido do qwen (normalização incompleta com padrão, correto com zero) e P4\_com\_ruido do deepseek (único sucesso com padrão, 0\% com zero).
+
+Essa distinção tem implicação metodológica direta: \textbf{avaliar LLMs com temperatura padrão e execução única superestima falhas do modelo} (ao reportar como estrutural o que é estocástico) e \textbf{também pode superestimar capacidades} (ao considerar um acerto ocasional como comportamento confiável). Temperatura zero com execução única é o mínimo necessário para resultados reproduzíveis; temperatura padrão com múltiplas execuções é necessária para caracterizar o comportamento real de uso.
+
+\subsection{Múltiplas Execuções com Temperatura Padrão}
+
+Para quantificar a variância estocástica, o experimento com temperatura padrão foi repetido 5 vezes (runs 1–5), e os resultados agregados como média~±~desvio padrão por combinação. As Tabelas~\ref{tab:multi_qwen} e~\ref{tab:multi_deepseek} apresentam esses valores (em pontos percentuais).
+
+\begin{table}[H]
+\centering
+\caption{qwen2.5-coder — média\,±\,\(\sigma\) em 5 runs com temperatura padrão}
+\label{tab:multi_qwen}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+\textbf{Prob.} & \textbf{Original} & \textbf{Reformulado} & \textbf{Inglês} & \textbf{Verboso} & \textbf{Vago} & \textbf{Com ruído} \\
+\midrule
+P1 & 100\,±\,0  & 80\,±\,45  & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  \\
+P2 & 100\,±\,0  & 60\,±\,55  & 100\,±\,0  & 100\,±\,0  &  80\,±\,45 &  94\,±\,13 \\
+P3 & 100\,±\,0  & 80\,±\,45  &  60\,±\,55 & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  \\
+P4 &  96\,±\,9  &  96\,±\,9  &  86\,±\,31 & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  \\
+P5 &  43\,±\,53 &  37\,±\,51 &   3\,±\,6  &   0\,±\,0  &  23\,±\,44 &  20\,±\,37 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{deepseek-coder — média\,±\,\(\sigma\) em 5 runs com temperatura padrão}
+\label{tab:multi_deepseek}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+\textbf{Prob.} & \textbf{Original} & \textbf{Reformulado} & \textbf{Inglês} & \textbf{Verboso} & \textbf{Vago} & \textbf{Com ruído} \\
+\midrule
+P1 &  80\,±\,45 & 100\,±\,0  &  60\,±\,55 &   0\,±\,0  & 100\,±\,0  & 100\,±\,0  \\
+P2 &   0\,±\,0  &   0\,±\,0  &  20\,±\,45 &  40\,±\,55 &   0\,±\,0  &   0\,±\,0  \\
+P3 &  80\,±\,45 &  25\,±\,43 &  25\,±\,43 &  40\,±\,55 &  45\,±\,51 &  40\,±\,55 \\
+P4 &  62\,±\,42 &  36\,±\,50 &  20\,±\,45 &  32\,±\,44 &   0\,±\,0  &  60\,±\,55 \\
+P5 &   0\,±\,0  &  17\,±\,38 &  17\,±\,38 &  20\,±\,45 &   0\,±\,0  &   0\,±\,0  \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+Os resultados revelam dois padrões contrastantes. Para o \texttt{qwen2.5-coder}, a maioria das combinações de P1–P4 apresenta $\sigma = 0$ ou baixo, indicando comportamento estável. As exceções notáveis são P1\_reformulado ($\sigma = 45$, com uma run obtendo 0\%), P2\_reformulado ($\sigma = 55$), P3\_ingles ($\sigma = 55$) e P4\_ingles ($\sigma = 31$) — evidenciando que mesmo o modelo mais capaz possui pontos frágeis que só surgem com múltiplas execuções. P5 é o problema mais instável: nenhuma variante supera média de 43\%, e os desvios padrão elevados (muitas vezes próximos de 50pp) indicam que as execuções oscilam entre acerto total e falha total.
+
+Para o \texttt{deepseek-coder}, a Tabela~\ref{tab:multi_deepseek} confirma alta variância generalizada. As únicas combinações estáveis são as que ficam consistentemente em 0\% (P2\_original, P2\_reformulado, P2\_vago, P2\_com\_ruido, P5\_original, P5\_vago, P5\_com\_ruido) ou em 100\% (P1\_reformulado, P1\_vago, P1\_com\_ruido) — indicando falhas e sucessos estruturais, respectivamente. Tudo mais é essencialmente aleatório, com desvios padrão frequentemente superiores a 40pp.
 
 % =============================================================================
 \section{Limitações, Riscos e Ameaças à Validade}
@@ -487,7 +602,7 @@ Indentação mista (tabs/espaços)     & deepseek-coder & P3\_com\_ruido \\
 
 \subsection{Número de Amostras por Combinação}
 
-Cada combinação modelo~$\times$~variante foi executada apenas uma vez. Modelos de linguagem possuem comportamento estocástico (temperatura $> 0$), de modo que execuções repetidas do mesmo \textit{prompt} poderiam produzir resultados diferentes. Para maior confiabilidade estatística, recomenda-se executar cada combinação pelo menos 5 vezes e reportar média e desvio padrão das taxas de aprovação.
+O experimento com temperatura padrão foi executado 5 vezes, permitindo calcular média e desvio padrão para cada combinação e superando a limitação de execução única presente nos trabalhos de referência. O experimento com temperatura zero, por ser determinístico, requer apenas uma execução. Para trabalhos futuros, recomenda-se aumentar o número de runs com temperatura padrão para pelo menos 10, a fim de obter estimativas de desvio padrão mais estáveis, especialmente para o \texttt{deepseek-coder}, cujos desvios próximos de 45–55pp indicam distribuição aproximadamente binomial (ou acerta ou não).
 
 \subsection{Cobertura dos Testes Unitários}
 
@@ -503,11 +618,45 @@ As variações de \textit{prompt} foram elaboradas pelo grupo sem protocolo form
 
 \subsection{Ausência de Acesso ao Mecanismo Interno}
 
-Conforme estabelecido na situação-problema, a avaliação foi realizada exclusivamente a partir do comportamento observado. Não foi possível inspecionar pesos, mecanismos de atenção ou distribuições de probabilidade internas aos modelos. Isso limita a capacidade explicativa dos resultados — é possível identificar \textit{que} o \texttt{deepseek-coder} falha em prompts em português, mas não \textit{por que} a partir dos experimentos realizados.
+Conforme estabelecido na situação-problema, a avaliação foi realizada exclusivamente a partir do comportamento observado. Não foi possível inspecionar pesos, mecanismos de atenção ou distribuições de probabilidade internas aos modelos. Isso limita a capacidade explicativa dos resultados — é possível identificar \textit{que} o \texttt{deepseek-coder} falha em determinados prompts, mas não \textit{por que} a partir dos experimentos realizados. A distinção entre falhas estruturais e estocásticas, realizada neste trabalho via comparação de temperaturas, oferece uma evidência comportamental, mas não substitui a análise interna dos modelos.
 
 \subsection{Execução Única por Modelo}
 
 Os experimentos foram realizados com uma única versão quantizada de cada modelo (versão \texttt{:1.5b} e \texttt{:1.3b}). Versões maiores dos mesmos modelos poderiam apresentar comportamento substancialmente diferente, e os resultados não devem ser interpretados como avaliação definitiva das famílias de modelos, mas apenas das versões específicas testadas.
+
+% =============================================================================
+\section*{Apêndice — Ambiente de Execução e Tempo dos Experimentos}
+% =============================================================================
+
+Todos os experimentos foram executados localmente, sem acesso a nuvem ou API externa. A tabela a seguir descreve o ambiente utilizado.
+
+\begin{table}[H]
+\centering
+\caption*{Configuração do ambiente de execução}
+\begin{tabular}{ll}
+\toprule
+\textbf{Componente} & \textbf{Descrição} \\
+\midrule
+Hardware         & Apple Mac Mini (chip M4) \\
+Sistema operacional & macOS Darwin 25.5.0 (arm64) \\
+Plataforma de inferência & Ollama 0.17.0 \\
+Modelo A         & \texttt{qwen2.5-coder:1.5b} (quantização padrão Ollama) \\
+Modelo B         & \texttt{deepseek-coder:1.3b} (quantização padrão Ollama) \\
+Linguagem dos scripts & Python 3.14.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Os tempos de execução aproximados por experimento foram:
+
+\begin{itemize}
+    \item \textbf{Experimento 1 — temperatura padrão, run única (60 combinações):} $\approx$ 8 minutos.
+    \item \textbf{Experimento 2 — temperatura zero (60 combinações):} $\approx$ 8 minutos.
+    \item \textbf{Experimento 3 — 4 runs adicionais com temperatura padrão (240 combinações):} $\approx$ 30 minutos.
+    \item \textbf{Total acumulado (360 chamadas à API local):} $\approx$ 46 minutos.
+\end{itemize}
+
+O tempo por chamada variou entre 3 e 20 segundos dependendo do modelo (\texttt{deepseek-coder} tende a gerar respostas mais longas por ignorar o \textit{system prompt} e incluir explicações) e do comprimento do prompt.
 
 % =============================================================================
 \bibliographystyle{abntex2-num}
