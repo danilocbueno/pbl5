@@ -481,6 +481,7 @@ Normalização de maiúsculas ausente    & deepseek-coder & P2\_ingles/verboso (
 Erro de semântica de API              & qwen2.5-coder  & P4\_ingles (\texttt{str.count} com substring) & Estocástica \\
 Normalização parcial                  & qwen2.5-coder  & P2\_com\_ruido (\texttt{s.lower()} sem \texttt{s[::-1].lower()}) & Estocástica \\
 Caso base incorreto em recursão       & deepseek-coder & P3\_ingles (\texttt{return n} em vez de \texttt{return 1}) & Estrutural \\
+Multiplicação de string (base retorna string) & deepseek-coder & P3\_reformulado run~4 (\texttt{n * "mensagem"} → 116~MB) & Estocástica \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -595,6 +596,24 @@ P5 &   0\,±\,0  &  17\,±\,38 &  17\,±\,38 &  20\,±\,45 &   0\,±\,0  &   0\,
 Os resultados revelam dois padrões contrastantes. Para o \texttt{qwen2.5-coder}, a maioria das combinações de P1–P4 apresenta $\sigma = 0$ ou baixo, indicando comportamento estável. As exceções notáveis são P1\_reformulado ($\sigma = 45$, com uma run obtendo 0\%), P2\_reformulado ($\sigma = 55$), P3\_ingles ($\sigma = 55$) e P4\_ingles ($\sigma = 31$) — evidenciando que mesmo o modelo mais capaz possui pontos frágeis que só surgem com múltiplas execuções. P5 é o problema mais instável: nenhuma variante supera média de 43\%, e os desvios padrão elevados (muitas vezes próximos de 50pp) indicam que as execuções oscilam entre acerto total e falha total.
 
 Para o \texttt{deepseek-coder}, a Tabela~\ref{tab:multi_deepseek} confirma alta variância generalizada. As únicas combinações estáveis são as que ficam consistentemente em 0\% (P2\_original, P2\_reformulado, P2\_vago, P2\_com\_ruido, P5\_original, P5\_vago, P5\_com\_ruido) ou em 100\% (P1\_reformulado, P1\_vago, P1\_com\_ruido) — indicando falhas e sucessos estruturais, respectivamente. Tudo mais é essencialmente aleatório, com desvios padrão frequentemente superiores a 40pp.
+
+Um achado particularmente notável emergiu na quarta run para o caso \texttt{deepseek-coder~|~P3\_reformulado}. O modelo gerou o seguinte código:
+
+\begin{lstlisting}[style=python, caption={Código gerado por deepseek-coder para P3\_reformulado (run 4) — multiplicação de string exponencial}]
+def fatorial(n):
+    if n == 0 or (n < 0 and not isinstance(n, int)):
+        return 'Por favor informe número positivo'
+    elif not isinstance(n, int):
+        return 'Por favor informe número positivo'
+    elif n == 1:
+        return 'Por favor informe outros valores'
+    else:
+        return n * fatorial(n - 1)
+\end{lstlisting}
+
+O código é sintaticamente válido e estruturalmente recursivo, mas os casos base retornam \textbf{strings de mensagem de erro} em vez de inteiros. Como consequência, a linha \texttt{return n * fatorial(n - 1)} executa \textit{multiplicação de string} em Python (\texttt{n * str} repete a string \texttt{n} vezes), não multiplicação numérica. O resultado de \texttt{fatorial(10)} é a string \texttt{"Por favor informe outros valores"} repetida $10! = 3.628.800$ vezes — um total de 116 milhões de caracteres. Esse único resultado inflou o arquivo de resultados da run 4 para 116~MB.
+
+Esse caso ilustra dois pontos metodológicos importantes. Primeiro, \textbf{falhas que só aparecem com múltiplas execuções}: nas outras quatro runs, o mesmo prompt gerou código diferente, e nenhuma produziu esse bug. Com execução única, o fenômeno seria invisível. Segundo, \textbf{riscos práticos de execução de código gerado por LLMs}: sem limitação de memória ou tempo de execução, uma única chamada pode consumir recursos inesperados — o que reforça a necessidade de sandboxing robusto em pipelines de avaliação automática.
 
 % =============================================================================
 \section{Limitações, Riscos e Ameaças à Validade}
