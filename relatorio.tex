@@ -99,7 +99,7 @@ Os cinco problemas escolhidos cobrem funcionalidades simples em Python:
 % =============================================================================
 \section{Fundamentação da estratégia de avaliação adotada}
 % =============================================================================
-A estratégia adotada organiza-se em torno de três decisões metodológicas
+A estratégia adotada organiza-se em torno de duas decisões metodológicas
 interdependentes.
 
 A primeira é a resolução do \textit{Oracle Problem} \cite{barr2015oracle}
@@ -152,18 +152,6 @@ quanto a capacidade de resolver corretamente o problema varia com a formulação
 consistentemente o mesmo código incorreto para todas as variantes registra
 variação zero sem ter resolvido nenhuma instância do problema; por isso os
 testes unitários, e não a comparação entre outputs, são o critério central.
-
-A terceira é a separação entre \textbf{falhas estruturais e estocásticas}.
-LLMs com temperatura positiva são não determinísticos: a mesma combinação
-modelo~$\times$~\textit{prompt} pode produzir saídas distintas em execuções
-diferentes, tornando difícil distinguir limitações genuínas do modelo de
-resultados desfavoráveis por acaso. Para separar esses dois fenômenos, os
-experimentos foram conduzidos em dois regimes: temperatura padrão, executado
-cinco vezes por combinação para quantificar a variância estocástica; e
-temperatura zero, que desabilita a amostragem e torna os resultados
-determinísticos. Falhas que persistem em ambos os regimes são classificadas
-como estruturais; falhas que aparecem apenas em um dos regimes são
-classificadas como estocásticas.
 
 % =============================================================================
 \section{Descrição dos testes, experimentos e ensaios realizados}
@@ -344,7 +332,7 @@ corretude.
 
 Foram realizados dois experimentos com as mesmas 60 combinações modelo~$\times$~variante. O primeiro, com \textbf{temperatura zero} (determinístico), força o modelo a escolher sempre o token de maior probabilidade: o mesmo \textit{prompt} produz exatamente o mesmo código a cada execução, estabelecendo uma base reproduzível do comportamento de cada formulação. O segundo, com \textbf{temperatura padrão} do Ollama (estocástico, que representa o uso típico), foi repetido cinco vezes para caracterizar a variância introduzida pela amostragem.
 
-A análise é apresentada do comportamento mais reproduzível ao mais variável: primeiro a temperatura zero, em seguida a dispersão das cinco execuções com temperatura padrão e, por fim, a síntese que distingue falhas \textit{estruturais} — presentes independentemente da aleatoriedade — de falhas \textit{estocásticas}, que dependem do acaso na amostragem do modelo.
+A análise é apresentada do comportamento mais reproduzível ao mais variável: primeiro a temperatura zero, em seguida a dispersão das cinco execuções com temperatura padrão.
 
 \subsection{Temperatura Zero — Comportamento Determinístico}
 
@@ -482,10 +470,11 @@ def dois_maiores(nums):
 
 \textbf{deepseek-coder.} A Tabela~\ref{tab:multi_runs} confirma alta variância generalizada. As únicas combinações estáveis são as que ficam consistentemente em 0\% (P2\_original, P2\_reformulado, P2\_vago, P2\_com\_ruido, P5\_vago, P5\_com\_ruido) ou em 100\% (P1\_original, P1\_reformulado, P1\_ingles, P1\_vago, P1\_com\_ruido) — indicando falhas e sucessos estruturais, respectivamente. Tudo mais é essencialmente aleatório, com desvios padrão frequentemente superiores a 40pp.
 
+
 Um padrão recorrente ajuda a explicar boa parte dessa instabilidade — e em especial os 0\% quase universais de P2 e P5: o \texttt{deepseek-coder} frequentemente \textbf{ignora o nome de função especificado no \textit{prompt}}, mesmo quando o resto da implementação está correto. Em P2 (nome esperado: \texttt{palindromo}), das 30 gerações sintaticamente válidas ao longo das cinco runs, apenas 5 usaram o nome pedido; as demais geraram \texttt{palindrome} (13 vezes), \texttt{is\_palindrome} (5) ou até \texttt{is\_anagram} (2) — todas reprovadas em 100\% dos casos de teste, independentemente da corretude do algoritmo:
 
 \begin{lstlisting}[style=python, caption={deepseek-coder em P2\_original (run 3) — lógica correta, nome de função errado (0\%)}]
-def palindrome(s):                       # esperado: palindromo
+def palindrome(s): # esperado: palindromo
     s = ''.join(filter(str.isalnum, s)).lower()
     return s == s[::-1]
 \end{lstlisting}
@@ -493,10 +482,10 @@ def palindrome(s):                       # esperado: palindromo
 O mesmo padrão se repete em P5 (nome esperado: \texttt{dois\_maiores}): de 24 gerações válidas, apenas 11 usaram o nome correto, e as demais variaram entre \texttt{dos\_maiores} (5), \texttt{duas\_maiores} (2) e até \texttt{duos\_maiores} (1) — pequenos erros de digitação que, isoladamente, já bastam para zerar a taxa de aprovação:
 
 \begin{lstlisting}[style=python, caption={deepseek-coder em P5\_vago (run 5) e P5\_com\_ruido (run 1) — variações no nome de "dois\_maiores" (0\% em ambos)}]
-def duos_maiores(numeros):               # run 5 — esperado: dois_maiores
+def duos_maiores(numeros): # run 5 — esperado: dois_maiores
     ...
 
-def duas_maiores(lst):                   # run 1 — esperado: dois_maiores
+def duas_maiores(lst): # run 1 — esperado: dois_maiores
     ...
 \end{lstlisting}
 
@@ -517,63 +506,6 @@ def fatorial(n):
 \end{lstlisting}
 
 O código é sintaticamente válido e estruturalmente recursivo, mas os casos base retornam \textbf{strings de mensagem de erro} em vez de inteiros. Como consequência, a linha \texttt{return n * fatorial(n - 1)} executa \textit{multiplicação de string} em Python (\texttt{n * str} repete a string \texttt{n} vezes), não multiplicação numérica. O resultado de \texttt{fatorial(10)} é a string repetida $10! = 3.628.800$ vezes — cerca de 116 milhões de caracteres, que inflaram o arquivo de resultados dessa run para 116~MB. Nas outras quatro runs o mesmo \textit{prompt} gerou código diferente e nenhuma reproduziu o bug: com execução única o fenômeno seria invisível. O caso reforça também a necessidade de \textit{sandboxing} robusto (limites de memória e tempo) em \textit{pipelines} de avaliação automática de código gerado por LLMs.
-
-\subsection{Falhas Estruturais versus Estocásticas}
-
-A comparação entre os dois experimentos permite classificar as falhas observadas em duas categorias.
-
-\textbf{Falhas estruturais} persistem independentemente da temperatura, indicando uma limitação genuína do modelo para aquele \textit{prompt}. Para o \texttt{qwen2.5-coder}, a única falha estrutural identificada é P5 — os prompts verboso e vago consistentemente induzem bugs (tipo de retorno errado ou uso de \texttt{set()}), tanto com temperatura zero quanto na média das cinco runs, ainda que os bugs específicos gerados variem. Para o \texttt{deepseek-coder}, \texttt{P2\_vago} reprova de forma perfeitamente consistente em ambos os experimentos (0\% em temperatura zero e nas cinco execuções padrão); \texttt{P1\_verboso} é quase tão consistente — falha em temperatura zero e em quatro das cinco execuções padrão, com um único acerto isolado (20\,±\,45) —, e nenhuma variante de P2 atinge 100\% \textit{em média} (o máximo observado em qualquer execução isolada é 100\%, mas apenas esporadicamente, em \texttt{P2\_ingles} e \texttt{P2\_verboso}).
-
-\textbf{Falhas estocásticas} aparecem apenas com temperatura padrão e desaparecem com temperatura zero — ou o contrário. São resultado da amostragem probabilística que eventualmente seleciona tokens de um caminho incorreto. Os exemplos mais claros estão no \texttt{qwen2.5-coder}: \texttt{P4\_ingles} (\texttt{str.count} em algumas runs, \textit{loop} correto com temperatura zero) e \texttt{P2\_com\_ruido} (normalização incompleta em algumas runs, correta com zero). No \texttt{deepseek-coder} a componente estocástica é difusa — a maioria das combinações apresenta desvio padrão elevado (Tabela~\ref{tab:multi_runs}), oscilando entre acerto e falha sem um caso isolado tão nítido.
-
-Esses contrastes reforçam o argumento de Bommasani et al.~\cite{bommasani2023helm}: a avaliação por um único \textit{prompt} — ou por uma única execução — pode levar a conclusões opostas sobre a mesma capacidade, o que justifica a cobertura multidimensional (múltiplas variantes e múltiplas execuções) adotada neste trabalho.
-
-Essa distinção tem implicação metodológica direta: \textbf{avaliar LLMs com temperatura padrão e execução única superestima falhas do modelo} (ao reportar como estrutural o que é estocástico) e \textbf{também pode superestimar capacidades} (ao considerar um acerto ocasional como comportamento confiável). Temperatura zero com execução única é o mínimo necessário para resultados reproduzíveis; temperatura padrão com múltiplas execuções é necessária para caracterizar o comportamento real de uso.
-
-\subsection{Classificação dos Tipos de Falha Observados}
-
-A análise qualitativa dos códigos gerados, combinando os dois experimentos, permitiu categorizar as falhas conforme a Tabela~\ref{tab:falhas}. A coluna \textit{Natureza} indica se a falha é estrutural (presente em ambos os experimentos) ou estocástica (observada apenas com temperatura padrão).
-
-\begin{table}[H]
-\centering
-\caption{Classificação dos tipos de falha por caso}
-\label{tab:falhas}
-\begin{tabularx}{\textwidth}{>{\raggedright}p{4.5cm}
-                              >{\raggedright}p{2.5cm}
-                              >{\raggedright}X
-                              >{\raggedright\arraybackslash}p{2cm}}
-\toprule
-\textbf{Tipo de falha} & \textbf{Modelo} &
-\textbf{Casos representativos} & \textbf{Natureza} \\
-\midrule
-Erro de sintaxe (não executa) & deepseek-coder &
-    P2\_vago, P3\_verboso & Estrutural \\
-Nome de função incorreto & deepseek-coder &
-    P2\_reformulado (\texttt{palindrome}) & Estrutural \\
-Problema trocado & deepseek-coder &
-    P4\_reformulado (gerou contador de consoantes) & Estrutural \\
-Tipo de retorno incorreto & qwen2.5-coder &
-    P5\_verboso (lista vs tupla) & Estrutural \\
-Ordenação incorreta & qwen2.5-coder &
-    P5\_original (crescente vs decrescente) & Estrutural \\
-Lógica incorreta com \texttt{set()} & qwen2.5-coder &
-    P5\_vago (elimina duplicatas) & Estrutural \\
-Normalização de maiúsculas ausente & deepseek-coder &
-    P2\_ingles/verboso (\texttt{s == s[::-1]}) & Estrutural \\
-Erro de semântica de API & qwen2.5-coder &
-    P4\_ingles (\texttt{str.count} com substring) & Estocástica \\
-Normalização parcial & qwen2.5-coder &
-    P2\_com\_ruido (\texttt{s.lower()} sem \texttt{s[::-1].lower()})
-    & Estocástica \\
-Caso base incorreto em recursão & deepseek-coder &
-    P3\_ingles (\texttt{return n} em vez de \texttt{return 1})
-    & Estrutural \\
-Multiplicação de string & deepseek-coder &
-    P3\_reformulado run~4 (\texttt{n * "mensagem"} → 116~MB)
-    & Estocástica \\
-\bottomrule
-\end{tabularx}
-\end{table}
 
 
 % =============================================================================
@@ -598,7 +530,7 @@ As variações de \textit{prompt} foram elaboradas pelo grupo sem protocolo form
 
 \subsection{Ausência de acesso ao mecanismo interno}
 
-Conforme estabelecido na situação-problema, a avaliação foi realizada exclusivamente a partir do comportamento observado. Não foi possível inspecionar pesos, mecanismos de atenção ou distribuições de probabilidade internas aos modelos. Isso limita a capacidade explicativa dos resultados — é possível identificar \textit{que} o \texttt{deepseek-coder} falha em determinados prompts, mas não \textit{por que} a partir dos experimentos realizados. A distinção entre falhas estruturais e estocásticas, realizada neste trabalho via comparação de temperaturas, oferece uma evidência comportamental, mas não substitui a análise interna dos modelos.
+Conforme estabelecido na situação-problema, a avaliação foi realizada exclusivamente a partir do comportamento observado. Não foi possível inspecionar pesos, mecanismos de atenção ou distribuições de probabilidade internas aos modelos. Isso limita a capacidade explicativa dos resultados — é possível identificar \textit{que} o \texttt{deepseek-coder} falha em determinados prompts, mas não \textit{por que} a partir dos experimentos realizados.
 
 \subsection{Execução única por modelo}
 
