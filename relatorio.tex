@@ -482,7 +482,27 @@ def dois_maiores(nums):
 
 \textbf{deepseek-coder.} A Tabela~\ref{tab:multi_runs} confirma alta variância generalizada. As únicas combinações estáveis são as que ficam consistentemente em 0\% (P2\_original, P2\_reformulado, P2\_vago, P2\_com\_ruido, P5\_vago, P5\_com\_ruido) ou em 100\% (P1\_original, P1\_reformulado, P1\_ingles, P1\_vago, P1\_com\_ruido) — indicando falhas e sucessos estruturais, respectivamente. Tudo mais é essencialmente aleatório, com desvios padrão frequentemente superiores a 40pp.
 
-Um achado particularmente notável emergiu na quarta run para o caso \textbf{deepseek-coder~|~P3\_reformulado}. O modelo gerou o seguinte código:
+Um padrão recorrente ajuda a explicar boa parte dessa instabilidade — e em especial os 0\% quase universais de P2 e P5: o \texttt{deepseek-coder} frequentemente \textbf{ignora o nome de função especificado no \textit{prompt}}, mesmo quando o resto da implementação está correto. Em P2 (nome esperado: \texttt{palindromo}), das 30 gerações sintaticamente válidas ao longo das cinco runs, apenas 5 usaram o nome pedido; as demais geraram \texttt{palindrome} (13 vezes), \texttt{is\_palindrome} (5) ou até \texttt{is\_anagram} (2) — todas reprovadas em 100\% dos casos de teste, independentemente da corretude do algoritmo:
+
+\begin{lstlisting}[style=python, caption={deepseek-coder em P2\_original (run 3) — lógica correta, nome de função errado (0\%)}]
+def palindrome(s):                       # esperado: palindromo
+    s = ''.join(filter(str.isalnum, s)).lower()
+    return s == s[::-1]
+\end{lstlisting}
+
+O mesmo padrão se repete em P5 (nome esperado: \texttt{dois\_maiores}): de 24 gerações válidas, apenas 11 usaram o nome correto, e as demais variaram entre \texttt{dos\_maiores} (5), \texttt{duas\_maiores} (2) e até \texttt{duos\_maiores} (1) — pequenos erros de digitação que, isoladamente, já bastam para zerar a taxa de aprovação:
+
+\begin{lstlisting}[style=python, caption={deepseek-coder em P5\_vago (run 5) e P5\_com\_ruido (run 1) — variações no nome de "dois\_maiores" (0\% em ambos)}]
+def duos_maiores(numeros):               # run 5 — esperado: dois_maiores
+    ...
+
+def duas_maiores(lst):                   # run 1 — esperado: dois_maiores
+    ...
+\end{lstlisting}
+
+Esse comportamento já havia surgido isoladamente em temperatura zero (\texttt{P5\_com\_ruido} também gerou \texttt{dos\_maiores} ali), mas só a repetição ao longo de 30 amostras por problema revela sua extensão: para o \texttt{deepseek-coder}, a falha em aderir ao \textbf{contrato de interface} (nome exato da função) é, em si, uma fonte de erro tão relevante quanto bugs de lógica — e infla artificialmente a aparência de instabilidade em P2 e P5, quando na verdade boa parte do código gerado resolveria o problema corretamente sob outro nome.
+
+Um segundo achado, de natureza distinta, emergiu na quarta run para o caso \textbf{deepseek-coder~|~P3\_reformulado}. O modelo gerou o seguinte código:
 
 \begin{lstlisting}[style=python, caption={deepseek-coder em P3\_reformulado (run 4) — multiplicação de string exponencial}]
 def fatorial(n):
