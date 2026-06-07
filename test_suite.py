@@ -17,6 +17,7 @@ Como usar:
 
 import json
 import traceback
+import copy
 from datetime import datetime
 
 # =============================================================================
@@ -409,7 +410,11 @@ def run_generated_code(codigo: str, funcao: str, args: list):
         return None, f"FUNÇÃO '{funcao}' NÃO ENCONTRADA NO CÓDIGO GERADO"
 
     try:
-        resultado = namespace[funcao](*args)
+        # Cópia profunda: impede que código gerado que muta argumentos in-place
+        # (ex.: lst.sort()) corrompa permanentemente os casos em TEST_CASES,
+        # contaminando execuções futuras (mesmo em runs/variantes diferentes).
+        args_copia = copy.deepcopy(args)
+        resultado = namespace[funcao](*args_copia)
         return resultado, None
     except Exception as e:
         return None, f"ERRO EM EXECUÇÃO: {e}\n{traceback.format_exc()}"

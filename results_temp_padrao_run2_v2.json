@@ -1,0 +1,3804 @@
+{
+  "timestamp": "2026-06-07T14:19:19.599863",
+  "resultados": [
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P1_original",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5, 9, 2, 6]]",
+          "esperado": "9",
+          "obtido": "9",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[1]]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-3, -1, -4, -1, -5]]",
+          "esperado": "-1",
+          "obtido": "-1",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[0, 0, 0]]",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[100, 200, 150]]",
+          "esperado": "200",
+          "obtido": "200",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[-10, 0, 10]]",
+          "esperado": "10",
+          "obtido": "10",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[42]]",
+          "esperado": "42",
+          "obtido": "42",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[[7, 7, 7, 7]]",
+          "esperado": "7",
+          "obtido": "7",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P1_reformulado",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5, 9, 2, 6]]",
+          "esperado": "9",
+          "obtido": "9",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[1]]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-3, -1, -4, -1, -5]]",
+          "esperado": "-1",
+          "obtido": "-1",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[0, 0, 0]]",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[100, 200, 150]]",
+          "esperado": "200",
+          "obtido": "200",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[-10, 0, 10]]",
+          "esperado": "10",
+          "obtido": "10",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[42]]",
+          "esperado": "42",
+          "obtido": "42",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[[7, 7, 7, 7]]",
+          "esperado": "7",
+          "obtido": "7",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P1_ingles",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5, 9, 2, 6]]",
+          "esperado": "9",
+          "obtido": "9",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[1]]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-3, -1, -4, -1, -5]]",
+          "esperado": "-1",
+          "obtido": "-1",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[0, 0, 0]]",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[100, 200, 150]]",
+          "esperado": "200",
+          "obtido": "200",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[-10, 0, 10]]",
+          "esperado": "10",
+          "obtido": "10",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[42]]",
+          "esperado": "42",
+          "obtido": "42",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[[7, 7, 7, 7]]",
+          "esperado": "7",
+          "obtido": "7",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P1_verboso",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5, 9, 2, 6]]",
+          "esperado": "9",
+          "obtido": "9",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[1]]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-3, -1, -4, -1, -5]]",
+          "esperado": "-1",
+          "obtido": "-1",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[0, 0, 0]]",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[100, 200, 150]]",
+          "esperado": "200",
+          "obtido": "200",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[-10, 0, 10]]",
+          "esperado": "10",
+          "obtido": "10",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[42]]",
+          "esperado": "42",
+          "obtido": "42",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[[7, 7, 7, 7]]",
+          "esperado": "7",
+          "obtido": "7",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P1_vago",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5, 9, 2, 6]]",
+          "esperado": "9",
+          "obtido": "9",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[1]]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-3, -1, -4, -1, -5]]",
+          "esperado": "-1",
+          "obtido": "-1",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[0, 0, 0]]",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[100, 200, 150]]",
+          "esperado": "200",
+          "obtido": "200",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[-10, 0, 10]]",
+          "esperado": "10",
+          "obtido": "10",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[42]]",
+          "esperado": "42",
+          "obtido": "42",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[[7, 7, 7, 7]]",
+          "esperado": "7",
+          "obtido": "7",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P1_com_ruido",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5, 9, 2, 6]]",
+          "esperado": "9",
+          "obtido": "9",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[1]]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-3, -1, -4, -1, -5]]",
+          "esperado": "-1",
+          "obtido": "-1",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[0, 0, 0]]",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[100, 200, 150]]",
+          "esperado": "200",
+          "obtido": "200",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[-10, 0, 10]]",
+          "esperado": "10",
+          "obtido": "10",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[42]]",
+          "esperado": "42",
+          "obtido": "42",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[[7, 7, 7, 7]]",
+          "esperado": "7",
+          "obtido": "7",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P2_original",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P2_reformulado",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P2_ingles",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P2_vago",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P2_verboso",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P2_com_ruido",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "False",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "True",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P3_original",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[0]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[1]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[2]",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[3]",
+          "esperado": "6",
+          "obtido": "6",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[4]",
+          "esperado": "24",
+          "obtido": "24",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[5]",
+          "esperado": "120",
+          "obtido": "120",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[10]",
+          "esperado": "3628800",
+          "obtido": "3628800",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[7]",
+          "esperado": "5040",
+          "obtido": "5040",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P3_reformulado",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[0]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[1]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[2]",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[3]",
+          "esperado": "6",
+          "obtido": "6",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[4]",
+          "esperado": "24",
+          "obtido": "24",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[5]",
+          "esperado": "120",
+          "obtido": "120",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[10]",
+          "esperado": "3628800",
+          "obtido": "3628800",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[7]",
+          "esperado": "5040",
+          "obtido": "5040",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P3_ingles",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[0]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[1]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[2]",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[3]",
+          "esperado": "6",
+          "obtido": "6",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[4]",
+          "esperado": "24",
+          "obtido": "24",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[5]",
+          "esperado": "120",
+          "obtido": "120",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[10]",
+          "esperado": "3628800",
+          "obtido": "3628800",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[7]",
+          "esperado": "5040",
+          "obtido": "5040",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P3_com_ruido",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[0]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[1]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[2]",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[3]",
+          "esperado": "6",
+          "obtido": "6",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[4]",
+          "esperado": "24",
+          "obtido": "24",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[5]",
+          "esperado": "120",
+          "obtido": "120",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[10]",
+          "esperado": "3628800",
+          "obtido": "3628800",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[7]",
+          "esperado": "5040",
+          "obtido": "5040",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P3_verboso",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[0]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[1]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[2]",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[3]",
+          "esperado": "6",
+          "obtido": "6",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[4]",
+          "esperado": "24",
+          "obtido": "24",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[5]",
+          "esperado": "120",
+          "obtido": "120",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[10]",
+          "esperado": "3628800",
+          "obtido": "3628800",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[7]",
+          "esperado": "5040",
+          "obtido": "5040",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P3_vago",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[0]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[1]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[2]",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[3]",
+          "esperado": "6",
+          "obtido": "6",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[4]",
+          "esperado": "24",
+          "obtido": "24",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[5]",
+          "esperado": "120",
+          "obtido": "120",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[10]",
+          "esperado": "3628800",
+          "obtido": "3628800",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[7]",
+          "esperado": "5040",
+          "obtido": "5040",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P4_original",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['hello']",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['aeiou']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['bcdfg']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['AEIOU']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['Hello World']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['Unicamp']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['a']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['xyz']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P4_reformulado",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['hello']",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['aeiou']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['bcdfg']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['AEIOU']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['Hello World']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['Unicamp']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['a']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['xyz']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P4_ingles",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['hello']",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['aeiou']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['bcdfg']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['AEIOU']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['Hello World']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['Unicamp']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['a']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['xyz']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P4_verboso",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['hello']",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['aeiou']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['bcdfg']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['AEIOU']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['Hello World']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['Unicamp']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['a']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['xyz']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P4_vago",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['hello']",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['aeiou']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['bcdfg']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['AEIOU']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['Hello World']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['Unicamp']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['a']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['xyz']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P4_com_ruido",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['hello']",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['aeiou']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['bcdfg']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['AEIOU']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['Hello World']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['Unicamp']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['a']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['xyz']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P5_original",
+      "status": "OK",
+      "aprovados": 0,
+      "total": 7,
+      "taxa": 0.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "[5, 4]",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "[[10, 20]]",
+          "esperado": "(20, 10)",
+          "obtido": "[20, 10]",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "[[-1, -2, -3]]",
+          "esperado": "(-1, -2)",
+          "obtido": "[-1, -2]",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "[[5, 5, 5]]",
+          "esperado": "(5, 5)",
+          "obtido": "[5, 5]",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "[[1, 2, 3, 4, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "[5, 4]",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "[[100, 1, 50]]",
+          "esperado": "(100, 50)",
+          "obtido": "[100, 50]",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "[[0, -1, 1]]",
+          "esperado": "(1, 0)",
+          "obtido": "[1, 0]",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P5_reformulado",
+      "status": "OK",
+      "aprovados": 6,
+      "total": 7,
+      "taxa": 85.7,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "(5, 4)",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[10, 20]]",
+          "esperado": "(20, 10)",
+          "obtido": "(20, 10)",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-1, -2, -3]]",
+          "esperado": "(-1, -2)",
+          "obtido": "(-1, -2)",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[5, 5, 5]]",
+          "esperado": "(5, 5)",
+          "obtido": "(5, -inf)",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "[[1, 2, 3, 4, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "(5, 4)",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[100, 1, 50]]",
+          "esperado": "(100, 50)",
+          "obtido": "(100, 50)",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[0, -1, 1]]",
+          "esperado": "(1, 0)",
+          "obtido": "(1, 0)",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P5_ingles",
+      "status": "OK",
+      "aprovados": 7,
+      "total": 7,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "(5, 4)",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[10, 20]]",
+          "esperado": "(20, 10)",
+          "obtido": "(20, 10)",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-1, -2, -3]]",
+          "esperado": "(-1, -2)",
+          "obtido": "(-1, -2)",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[5, 5, 5]]",
+          "esperado": "(5, 5)",
+          "obtido": "(5, 5)",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[1, 2, 3, 4, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "(5, 4)",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[100, 1, 50]]",
+          "esperado": "(100, 50)",
+          "obtido": "(100, 50)",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[0, -1, 1]]",
+          "esperado": "(1, 0)",
+          "obtido": "(1, 0)",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P5_verboso",
+      "status": "OK",
+      "aprovados": 0,
+      "total": 7,
+      "taxa": 0.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "ERRO EM EXECUÇÃO: name 'maires' is not defined\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 7, in dois_maiores\nNameError: name 'maires' is not defined. Did you mean: 'maiores'?\n",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "[[10, 20]]",
+          "esperado": "(20, 10)",
+          "obtido": "ERRO EM EXECUÇÃO: name 'maires' is not defined\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 7, in dois_maiores\nNameError: name 'maires' is not defined. Did you mean: 'maiores'?\n",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "[[-1, -2, -3]]",
+          "esperado": "(-1, -2)",
+          "obtido": "ERRO EM EXECUÇÃO: name 'maires' is not defined\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 7, in dois_maiores\nNameError: name 'maires' is not defined. Did you mean: 'maiores'?\n",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "[[5, 5, 5]]",
+          "esperado": "(5, 5)",
+          "obtido": "ERRO EM EXECUÇÃO: name 'maires' is not defined\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 7, in dois_maiores\nNameError: name 'maires' is not defined. Did you mean: 'maiores'?\n",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "[[1, 2, 3, 4, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "ERRO EM EXECUÇÃO: name 'maires' is not defined\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 7, in dois_maiores\nNameError: name 'maires' is not defined. Did you mean: 'maiores'?\n",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "[[100, 1, 50]]",
+          "esperado": "(100, 50)",
+          "obtido": "ERRO EM EXECUÇÃO: name 'maires' is not defined\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 7, in dois_maiores\nNameError: name 'maires' is not defined. Did you mean: 'maiores'?\n",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "[[0, -1, 1]]",
+          "esperado": "(1, 0)",
+          "obtido": "ERRO EM EXECUÇÃO: name 'maires' is not defined\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 7, in dois_maiores\nNameError: name 'maires' is not defined. Did you mean: 'maiores'?\n",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P5_vago",
+      "status": "OK",
+      "aprovados": 1,
+      "total": 7,
+      "taxa": 14.3,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "(4, 5)",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "[[10, 20]]",
+          "esperado": "(20, 10)",
+          "obtido": "(10, 20)",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "[[-1, -2, -3]]",
+          "esperado": "(-1, -2)",
+          "obtido": "(-2, -1)",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "[[5, 5, 5]]",
+          "esperado": "(5, 5)",
+          "obtido": "(5, 5)",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[1, 2, 3, 4, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "(4, 5)",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "[[100, 1, 50]]",
+          "esperado": "(100, 50)",
+          "obtido": "(50, 100)",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "[[0, -1, 1]]",
+          "esperado": "(1, 0)",
+          "obtido": "(0, 1)",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "qwen2.5-coder",
+      "variante": "P5_com_ruido",
+      "status": "OK",
+      "aprovados": 0,
+      "total": 7,
+      "taxa": 0.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "[5, 4]",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "[[10, 20]]",
+          "esperado": "(20, 10)",
+          "obtido": "[20, 10]",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "[[-1, -2, -3]]",
+          "esperado": "(-1, -2)",
+          "obtido": "[-1, -2]",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "[[5, 5, 5]]",
+          "esperado": "(5, 5)",
+          "obtido": "[5]",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "[[1, 2, 3, 4, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "[5, 4]",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "[[100, 1, 50]]",
+          "esperado": "(100, 50)",
+          "obtido": "[100, 50]",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "[[0, -1, 1]]",
+          "esperado": "(1, 0)",
+          "obtido": "[1, 0]",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P1_original",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5, 9, 2, 6]]",
+          "esperado": "9",
+          "obtido": "9",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[1]]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-3, -1, -4, -1, -5]]",
+          "esperado": "-1",
+          "obtido": "-1",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[0, 0, 0]]",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[100, 200, 150]]",
+          "esperado": "200",
+          "obtido": "200",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[-10, 0, 10]]",
+          "esperado": "10",
+          "obtido": "10",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[42]]",
+          "esperado": "42",
+          "obtido": "42",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[[7, 7, 7, 7]]",
+          "esperado": "7",
+          "obtido": "7",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P1_reformulado",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5, 9, 2, 6]]",
+          "esperado": "9",
+          "obtido": "9",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[1]]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-3, -1, -4, -1, -5]]",
+          "esperado": "-1",
+          "obtido": "-1",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[0, 0, 0]]",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[100, 200, 150]]",
+          "esperado": "200",
+          "obtido": "200",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[-10, 0, 10]]",
+          "esperado": "10",
+          "obtido": "10",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[42]]",
+          "esperado": "42",
+          "obtido": "42",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[[7, 7, 7, 7]]",
+          "esperado": "7",
+          "obtido": "7",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P1_ingles",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5, 9, 2, 6]]",
+          "esperado": "9",
+          "obtido": "9",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[1]]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-3, -1, -4, -1, -5]]",
+          "esperado": "-1",
+          "obtido": "-1",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[0, 0, 0]]",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[100, 200, 150]]",
+          "esperado": "200",
+          "obtido": "200",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[-10, 0, 10]]",
+          "esperado": "10",
+          "obtido": "10",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[42]]",
+          "esperado": "42",
+          "obtido": "42",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[[7, 7, 7, 7]]",
+          "esperado": "7",
+          "obtido": "7",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P1_verboso",
+      "status": "OK",
+      "aprovados": 0,
+      "total": 8,
+      "taxa": 0.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5, 9, 2, 6]]",
+          "esperado": "9",
+          "obtido": "[3, 1, 4, 1, 5, 9, 2, 6]",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "[[1]]",
+          "esperado": "1",
+          "obtido": "[1]",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "[[-3, -1, -4, -1, -5]]",
+          "esperado": "-1",
+          "obtido": "[-3, -1, -4, -1, -5]",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "[[0, 0, 0]]",
+          "esperado": "0",
+          "obtido": "[0, 0, 0]",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "[[100, 200, 150]]",
+          "esperado": "200",
+          "obtido": "[100, 200, 150]",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "[[-10, 0, 10]]",
+          "esperado": "10",
+          "obtido": "[-10, 0, 10]",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "[[42]]",
+          "esperado": "42",
+          "obtido": "[42]",
+          "passou": false
+        },
+        {
+          "caso": 8,
+          "args": "[[7, 7, 7, 7]]",
+          "esperado": "7",
+          "obtido": "[7, 7, 7, 7]",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P1_vago",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5, 9, 2, 6]]",
+          "esperado": "9",
+          "obtido": "9",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[1]]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-3, -1, -4, -1, -5]]",
+          "esperado": "-1",
+          "obtido": "-1",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[0, 0, 0]]",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[100, 200, 150]]",
+          "esperado": "200",
+          "obtido": "200",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[-10, 0, 10]]",
+          "esperado": "10",
+          "obtido": "10",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[42]]",
+          "esperado": "42",
+          "obtido": "42",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[[7, 7, 7, 7]]",
+          "esperado": "7",
+          "obtido": "7",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P1_com_ruido",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5, 9, 2, 6]]",
+          "esperado": "9",
+          "obtido": "9",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[1]]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-3, -1, -4, -1, -5]]",
+          "esperado": "-1",
+          "obtido": "-1",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[0, 0, 0]]",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[[100, 200, 150]]",
+          "esperado": "200",
+          "obtido": "200",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[-10, 0, 10]]",
+          "esperado": "10",
+          "obtido": "10",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[42]]",
+          "esperado": "42",
+          "obtido": "42",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[[7, 7, 7, 7]]",
+          "esperado": "7",
+          "obtido": "7",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P2_original",
+      "status": "OK",
+      "aprovados": 0,
+      "total": 10,
+      "taxa": 0.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P2_reformulado",
+      "status": "OK",
+      "aprovados": 0,
+      "total": 10,
+      "taxa": 0.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P2_ingles",
+      "status": "OK",
+      "aprovados": 0,
+      "total": 10,
+      "taxa": 0.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P2_vago",
+      "status": "SEM_CODIGO",
+      "aprovados": 0,
+      "total": 10,
+      "taxa": 0.0,
+      "detalhes": []
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P2_verboso",
+      "status": "OK",
+      "aprovados": 0,
+      "total": 10,
+      "taxa": 0.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "ERRO EM EXECUÇÃO: replace() takes at least 2 positional arguments (1 given)\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 2, in palindromo\nTypeError: replace() takes at least 2 positional arguments (1 given)\n",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "ERRO EM EXECUÇÃO: replace() takes at least 2 positional arguments (1 given)\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 2, in palindromo\nTypeError: replace() takes at least 2 positional arguments (1 given)\n",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "ERRO EM EXECUÇÃO: replace() takes at least 2 positional arguments (1 given)\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 2, in palindromo\nTypeError: replace() takes at least 2 positional arguments (1 given)\n",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "ERRO EM EXECUÇÃO: replace() takes at least 2 positional arguments (1 given)\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 2, in palindromo\nTypeError: replace() takes at least 2 positional arguments (1 given)\n",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "ERRO EM EXECUÇÃO: replace() takes at least 2 positional arguments (1 given)\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 2, in palindromo\nTypeError: replace() takes at least 2 positional arguments (1 given)\n",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "ERRO EM EXECUÇÃO: replace() takes at least 2 positional arguments (1 given)\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 2, in palindromo\nTypeError: replace() takes at least 2 positional arguments (1 given)\n",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "ERRO EM EXECUÇÃO: replace() takes at least 2 positional arguments (1 given)\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 2, in palindromo\nTypeError: replace() takes at least 2 positional arguments (1 given)\n",
+          "passou": false
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "ERRO EM EXECUÇÃO: replace() takes at least 2 positional arguments (1 given)\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 2, in palindromo\nTypeError: replace() takes at least 2 positional arguments (1 given)\n",
+          "passou": false
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "ERRO EM EXECUÇÃO: replace() takes at least 2 positional arguments (1 given)\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 2, in palindromo\nTypeError: replace() takes at least 2 positional arguments (1 given)\n",
+          "passou": false
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "ERRO EM EXECUÇÃO: replace() takes at least 2 positional arguments (1 given)\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 2, in palindromo\nTypeError: replace() takes at least 2 positional arguments (1 given)\n",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P2_com_ruido",
+      "status": "OK",
+      "aprovados": 0,
+      "total": 10,
+      "taxa": 0.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['arara']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "['AmanaplanacanalPanama']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "['Arara']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "['racecar']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "['hello']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 8,
+          "args": "['a']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 9,
+          "args": "['ab']",
+          "esperado": "False",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 10,
+          "args": "['Ana']",
+          "esperado": "True",
+          "obtido": "FUNÇÃO 'palindromo' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P3_original",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[0]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[1]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[2]",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[3]",
+          "esperado": "6",
+          "obtido": "6",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[4]",
+          "esperado": "24",
+          "obtido": "24",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[5]",
+          "esperado": "120",
+          "obtido": "120",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[10]",
+          "esperado": "3628800",
+          "obtido": "3628800",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[7]",
+          "esperado": "5040",
+          "obtido": "5040",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P3_reformulado",
+      "status": "SEM_CODIGO",
+      "aprovados": 0,
+      "total": 8,
+      "taxa": 0.0,
+      "detalhes": []
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P3_ingles",
+      "status": "SEM_CODIGO",
+      "aprovados": 0,
+      "total": 8,
+      "taxa": 0.0,
+      "detalhes": []
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P3_com_ruido",
+      "status": "SEM_CODIGO",
+      "aprovados": 0,
+      "total": 8,
+      "taxa": 0.0,
+      "detalhes": []
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P3_verboso",
+      "status": "OK",
+      "aprovados": 8,
+      "total": 8,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[0]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[1]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[2]",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[3]",
+          "esperado": "6",
+          "obtido": "6",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "[4]",
+          "esperado": "24",
+          "obtido": "24",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[5]",
+          "esperado": "120",
+          "obtido": "120",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[10]",
+          "esperado": "3628800",
+          "obtido": "3628800",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "[7]",
+          "esperado": "5040",
+          "obtido": "5040",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P3_vago",
+      "status": "OK",
+      "aprovados": 2,
+      "total": 8,
+      "taxa": 25.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[0]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[1]",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[2]",
+          "esperado": "2",
+          "obtido": "ERRO EM EXECUÇÃO: name 'factorial' is not defined\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 5, in fatorial\nNameError: name 'factorial' is not defined. Did you mean: 'fatorial'?\n",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "[3]",
+          "esperado": "6",
+          "obtido": "ERRO EM EXECUÇÃO: name 'factorial' is not defined\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 5, in fatorial\nNameError: name 'factorial' is not defined. Did you mean: 'fatorial'?\n",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "[4]",
+          "esperado": "24",
+          "obtido": "ERRO EM EXECUÇÃO: name 'factorial' is not defined\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 5, in fatorial\nNameError: name 'factorial' is not defined. Did you mean: 'fatorial'?\n",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "[5]",
+          "esperado": "120",
+          "obtido": "ERRO EM EXECUÇÃO: name 'factorial' is not defined\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 5, in fatorial\nNameError: name 'factorial' is not defined. Did you mean: 'fatorial'?\n",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "[10]",
+          "esperado": "3628800",
+          "obtido": "ERRO EM EXECUÇÃO: name 'factorial' is not defined\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 5, in fatorial\nNameError: name 'factorial' is not defined. Did you mean: 'fatorial'?\n",
+          "passou": false
+        },
+        {
+          "caso": 8,
+          "args": "[7]",
+          "esperado": "5040",
+          "obtido": "ERRO EM EXECUÇÃO: name 'factorial' is not defined\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 5, in fatorial\nNameError: name 'factorial' is not defined. Did you mean: 'fatorial'?\n",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P4_original",
+      "status": "OK",
+      "aprovados": 9,
+      "total": 10,
+      "taxa": 90.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['hello']",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['aeiou']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['bcdfg']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['AEIOU']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['Hello World']",
+          "esperado": "3",
+          "obtido": "2",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['Unicamp']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['a']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['xyz']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P4_reformulado",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['hello']",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['aeiou']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['bcdfg']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['AEIOU']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['Hello World']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['Unicamp']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['a']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['xyz']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P4_ingles",
+      "status": "SEM_CODIGO",
+      "aprovados": 0,
+      "total": 10,
+      "taxa": 0.0,
+      "detalhes": []
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P4_verboso",
+      "status": "OK",
+      "aprovados": 9,
+      "total": 10,
+      "taxa": 90.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['hello']",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['aeiou']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['bcdfg']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['AEIOU']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['Hello World']",
+          "esperado": "3",
+          "obtido": "2",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['Unicamp']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['a']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['xyz']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P4_vago",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['hello']",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['aeiou']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['bcdfg']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['AEIOU']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['Hello World']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['Unicamp']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['a']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['xyz']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P4_com_ruido",
+      "status": "OK",
+      "aprovados": 10,
+      "total": 10,
+      "taxa": 100.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "['hello']",
+          "esperado": "2",
+          "obtido": "2",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "['python']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "['aeiou']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "['bcdfg']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 5,
+          "args": "['AEIOU']",
+          "esperado": "5",
+          "obtido": "5",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "['Hello World']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "['']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        },
+        {
+          "caso": 8,
+          "args": "['Unicamp']",
+          "esperado": "3",
+          "obtido": "3",
+          "passou": true
+        },
+        {
+          "caso": 9,
+          "args": "['a']",
+          "esperado": "1",
+          "obtido": "1",
+          "passou": true
+        },
+        {
+          "caso": 10,
+          "args": "['xyz']",
+          "esperado": "0",
+          "obtido": "0",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P5_original",
+      "status": "SEM_CODIGO",
+      "aprovados": 0,
+      "total": 7,
+      "taxa": 0.0,
+      "detalhes": []
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P5_reformulado",
+      "status": "SEM_CODIGO",
+      "aprovados": 0,
+      "total": 7,
+      "taxa": 0.0,
+      "detalhes": []
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P5_ingles",
+      "status": "OK",
+      "aprovados": 6,
+      "total": 7,
+      "taxa": 85.7,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "(5, 4)",
+          "passou": true
+        },
+        {
+          "caso": 2,
+          "args": "[[10, 20]]",
+          "esperado": "(20, 10)",
+          "obtido": "(20, 10)",
+          "passou": true
+        },
+        {
+          "caso": 3,
+          "args": "[[-1, -2, -3]]",
+          "esperado": "(-1, -2)",
+          "obtido": "(-1, -2)",
+          "passou": true
+        },
+        {
+          "caso": 4,
+          "args": "[[5, 5, 5]]",
+          "esperado": "(5, 5)",
+          "obtido": "None",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "[[1, 2, 3, 4, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "(5, 4)",
+          "passou": true
+        },
+        {
+          "caso": 6,
+          "args": "[[100, 1, 50]]",
+          "esperado": "(100, 50)",
+          "obtido": "(100, 50)",
+          "passou": true
+        },
+        {
+          "caso": 7,
+          "args": "[[0, -1, 1]]",
+          "esperado": "(1, 0)",
+          "obtido": "(1, 0)",
+          "passou": true
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P5_verboso",
+      "status": "OK",
+      "aprovados": 0,
+      "total": 7,
+      "taxa": 0.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "[[10, 20]]",
+          "esperado": "(20, 10)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "[[-1, -2, -3]]",
+          "esperado": "(-1, -2)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "[[5, 5, 5]]",
+          "esperado": "(5, 5)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "[[1, 2, 3, 4, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "[[100, 1, 50]]",
+          "esperado": "(100, 50)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "[[0, -1, 1]]",
+          "esperado": "(1, 0)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P5_vago",
+      "status": "OK",
+      "aprovados": 0,
+      "total": 7,
+      "taxa": 0.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "ERRO EM EXECUÇÃO: cannot access local variable 'segundo_maior' where it is not associated with a value\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 15, in dois_maiores\nUnboundLocalError: cannot access local variable 'segundo_maior' where it is not associated with a value\n",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "[[10, 20]]",
+          "esperado": "(20, 10)",
+          "obtido": "ERRO EM EXECUÇÃO: cannot access local variable 'segundo_maior' where it is not associated with a value\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 15, in dois_maiores\nUnboundLocalError: cannot access local variable 'segundo_maior' where it is not associated with a value\n",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "[[-1, -2, -3]]",
+          "esperado": "(-1, -2)",
+          "obtido": "ERRO EM EXECUÇÃO: cannot access local variable 'segundo_maior' where it is not associated with a value\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 15, in dois_maiores\nUnboundLocalError: cannot access local variable 'segundo_maior' where it is not associated with a value\n",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "[[5, 5, 5]]",
+          "esperado": "(5, 5)",
+          "obtido": "ERRO EM EXECUÇÃO: cannot access local variable 'segundo_maior' where it is not associated with a value\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 15, in dois_maiores\nUnboundLocalError: cannot access local variable 'segundo_maior' where it is not associated with a value\n",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "[[1, 2, 3, 4, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "ERRO EM EXECUÇÃO: cannot access local variable 'segundo_maior' where it is not associated with a value\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 15, in dois_maiores\nUnboundLocalError: cannot access local variable 'segundo_maior' where it is not associated with a value\n",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "[[100, 1, 50]]",
+          "esperado": "(100, 50)",
+          "obtido": "ERRO EM EXECUÇÃO: cannot access local variable 'segundo_maior' where it is not associated with a value\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 15, in dois_maiores\nUnboundLocalError: cannot access local variable 'segundo_maior' where it is not associated with a value\n",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "[[0, -1, 1]]",
+          "esperado": "(1, 0)",
+          "obtido": "ERRO EM EXECUÇÃO: cannot access local variable 'segundo_maior' where it is not associated with a value\nTraceback (most recent call last):\n  File \"/Users/danilocbueno/Desktop/pbl4/test_suite.py\", line 417, in run_generated_code\n    resultado = namespace[funcao](*args_copia)\n  File \"<string>\", line 15, in dois_maiores\nUnboundLocalError: cannot access local variable 'segundo_maior' where it is not associated with a value\n",
+          "passou": false
+        }
+      ]
+    },
+    {
+      "modelo": "deepseek-coder",
+      "variante": "P5_com_ruido",
+      "status": "OK",
+      "aprovados": 0,
+      "total": 7,
+      "taxa": 0.0,
+      "detalhes": [
+        {
+          "caso": 1,
+          "args": "[[3, 1, 4, 1, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 2,
+          "args": "[[10, 20]]",
+          "esperado": "(20, 10)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 3,
+          "args": "[[-1, -2, -3]]",
+          "esperado": "(-1, -2)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 4,
+          "args": "[[5, 5, 5]]",
+          "esperado": "(5, 5)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 5,
+          "args": "[[1, 2, 3, 4, 5]]",
+          "esperado": "(5, 4)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 6,
+          "args": "[[100, 1, 50]]",
+          "esperado": "(100, 50)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        },
+        {
+          "caso": 7,
+          "args": "[[0, -1, 1]]",
+          "esperado": "(1, 0)",
+          "obtido": "FUNÇÃO 'dois_maiores' NÃO ENCONTRADA NO CÓDIGO GERADO",
+          "passou": false
+        }
+      ]
+    }
+  ]
+}

@@ -266,14 +266,68 @@ extração utilizou as seguintes heurísticas:
     \item Normalização de indentação (conversão de tabs para 4 espaços).
 \end{enumerate}
 
-Para garantir uma comparação justa - avaliando a capacidade de
-resolução do problema e não a aderência ao formato, os casos com
-código sintaticamente válido após extração foram avaliados
-normalmente. Após esse processamento, 49 dos 60 casos resultaram em
-código válido. Os 11 casos remanescentes foram registrados como falha
-irrecuperável, representando situações em que o modelo não conseguiu
-gerar código executável independentemente de questões de formatação.
-Todos os casos inválidos pertencem ao \texttt{deepseek-coder}.
+Para garantir uma comparação justa — avaliando a capacidade de
+resolução do problema e não a aderência ao formato —, apenas os casos
+com código sintaticamente válido após a extração foram avaliados; os
+demais foram contabilizados como falha de geração para aquela execução.
+A quantidade de casos inválidos é, ela própria, \textit{estocástica}
+sob temperatura padrão: variou entre 9 e 14 dos 60 casos por execução
+(11 na primeira run), em sua maioria — mas nem sempre exclusivamente —
+do \texttt{deepseek-coder} (nas runs 2 e 3 o \texttt{qwen2.5-coder}
+também gerou código inválido). Sob temperatura zero (determinística),
+esse número cai para 5 casos, todos do \texttt{deepseek-coder}. Apenas
+estes últimos podem ser considerados falhas estruturais de geração; os
+demais são, em princípio, recuperáveis por reamostragem.
+
+Os dois exemplos a seguir ilustram casos em que o próprio modelo
+constrói uma expressão Python incorreta — não prosa remanescente nem
+deslizes de indentação, mas confusão genuína sobre a sintaxe da
+construção que estava tentando escrever.
+
+O primeiro, do \texttt{deepseek-coder} para \texttt{P3\_original}
+(\textit{prompt}: ``Escreva uma função Python chamada \texttt{fatorial}
+que calcula o fatorial de um número inteiro \texttt{n} usando
+recursão\dots''), executado com temperatura padrão:
+
+\begin{lstlisting}[style=python, caption={deepseek-coder em P3\_original — operador ternário malformado}]
+def fatorial(n):
+    if not isinstance(n, int) or n < 0:
+        raise ValueError('O argumento deve ser um valor positive integer')
+
+    return 1 if (n == 0 else n * fatorial(n-1))
+\end{lstlisting}
+
+A última linha tenta escrever um operador ternário (\texttt{X if
+condição else Y}), mas o modelo o constrói de forma equivocada,
+envolvendo a condição em parênteses e posicionando o \texttt{else}
+\textit{dentro} deles — uma confusão entre a sintaxe do ternário Python
+e a de outras linguagens (como o \texttt{cond ? a : b} de C/Java). O
+\texttt{ast.parse} rejeita com \textit{invalid syntax} na própria linha
+do erro: não há prosa a remover nem indentação a corrigir — a
+construção em si é sintaticamente impossível.
+
+O segundo, do \texttt{deepseek-coder} para \texttt{P5\_vago}
+(\textit{prompt}: ``Função Python \texttt{dois\_maiores} que retorna os
+dois maiores de uma lista como tupla''), também sob temperatura padrão:
+
+\begin{lstlisting}[style=python, caption={deepseek-coder em P5\_vago — aninhamento de parênteses e colchetes fora de controle}]
+def dois_maiores(lst):
+    lst = list(set([i for i in set(lst) if type(i)!=str]))
+    lst = [x for x in set([int(y) if isinstance(y, str) and y[0] != '-'
+           else float('-inf')]) | sort(), 2)]))]))))))
+    return tuple(lst[-1:]) + lst[0] if len(lst) >= 2 else None
+\end{lstlisting}
+
+Ao tentar compor uma expressão de \textit{list comprehension} aninhada
+com conversões de tipo, o modelo perde o controle da própria construção:
+a segunda linha acumula chamadas e colchetes que não fecham na ordem em
+que abrem, terminando em uma sequência de seis parênteses/colchetes de
+fechamento sem abertura correspondente. O \texttt{ast.parse} rejeita com
+\textit{closing parenthesis `)' does not match opening parenthesis
+`['}. Em ambos os exemplos, o erro está na lógica estrutural que o
+modelo tentou expressar — não há separação possível entre ``código'' e
+``prosa'' a ser corrigida pela extração; apenas a reamostragem poderia,
+eventualmente, produzir uma construção sintaticamente válida.
 
 \subsection{Avaliação}
 
@@ -314,7 +368,7 @@ qwen2.5-coder & P5 &  14\% & 100\% & 100\% &   0\% &   0\% & 100\% & \textbf{100
 deepseek-coder & P1 & 100\% & 100\% & 100\% &   0\% & 100\% & 100\% & \textbf{100pp} \\
 deepseek-coder & P2 &   0\% &   0\% &  70\% &  70\% &   0\% &   0\% & \textbf{70pp} \\
 deepseek-coder & P3 & 100\% & 100\% &  88\% &   0\% & 100\% &   0\% & \textbf{100pp} \\
-deepseek-coder & P4 & 100\% &   0\% & 100\% & 100\% &   0\% &   0\% & \textbf{100pp} \\
+deepseek-coder & P4 & 100\% &   0\% & 100\% & 100\% &   0\% & 100\% & \textbf{100pp} \\
 deepseek-coder & P5 &  71\% &   0\% &  86\% &  86\% &   0\% &   0\% & \textbf{86pp} \\
 \bottomrule
 \end{tabular}%
@@ -342,54 +396,60 @@ def dois_maiores(lista):
 
 \begin{itemize}
     \item \textbf{P3:} \texttt{P3\_original}, \texttt{P3\_reformulado} e \texttt{P3\_vago} atingem 100\%; \texttt{P3\_ingles} cai para 88\% por um bug sutil — o caso base retorna \texttt{n} em vez de \texttt{1}, fazendo \texttt{fatorial(0) = 0}; \texttt{P3\_verboso} e \texttt{P3\_com\_ruido} ficam em 0\%.
-    \item \textbf{P4:} \texttt{P4\_original}, \texttt{P4\_ingles} e \texttt{P4\_verboso} atingem 100\%. O destaque negativo é \texttt{P4\_reformulado}, que gera uma função \texttt{count\_consonants} contando \textit{consoantes} em vez de vogais — um caso extremo de ``problema trocado'', com a lógica completamente invertida.
+    \item \textbf{P4:} \texttt{P4\_original}, \texttt{P4\_ingles}, \texttt{P4\_verboso} e \texttt{P4\_com\_ruido} atingem 100\%; \texttt{P4\_vago} fica em 0\% (código malformado). O destaque negativo é \texttt{P4\_reformulado}, que gera uma função \texttt{count\_consonants} contando \textit{consoantes} em vez de vogais — um caso extremo de ``problema trocado'', com a lógica completamente invertida.
     \item \textbf{P2:} nunca atinge 100\%. \texttt{P2\_ingles} e \texttt{P2\_verboso} alcançam apenas 70\% pois ambos geram \texttt{return s == s[::-1]}, que ignora a normalização de maiúsculas e espaços; as demais variantes ficam em 0\%.
-    \item \textbf{P1 e P5:} em P1 apenas o verboso falha (0\%); em P5, original (71\%), inglês (86\%) e verboso (86\%) são parcialmente corretos, enquanto reformulado, vago e com ruído ficam em 0\%.
+    \item \textbf{P1:} apenas \texttt{P1\_verboso} falha (0\%); as demais cinco variantes atingem 100\%.
 \end{itemize}
+
+Assim como ocorre com o \texttt{qwen2.5-coder}, P5 é onde o \texttt{deepseek-coder} concentra a maior diversidade de bugs: três variantes produzem código parcialmente correto (\texttt{original}, 71\%; \texttt{inglês} e \texttt{verboso}, 86\%) e três falham por completo (0\%), cada uma de um modo distinto:
+
+\begin{lstlisting}[style=python, caption={Falhas de deepseek-coder em P5 com temperatura zero}]
+# P5_com_ruido — função definida com o nome errado: "dos_maiores" (0%)
+def dos_maiores(numeros):
+    numeros = list(set(numeros))
+    ...
+
+# P5_reformulado — retorna tupla aninhada com elementos extras, não (maior, segundo_maior) (0%)
+def dois_maiores(numeros):
+    numeros.sort()
+    return (numeros[-1], numeros[-2]) if len(numeros) > 1 else None, max(numeros), min(numeros)
+
+# P5_vago — tipo de retorno inconsistente: string no caso geral, tupla só para listas de tamanho 3 (0%)
+def dois_maiores(lista):
+    ...
+    return (maior1, maior2) if len(lista) == 3 else "Lista com menos que dois elementos"
+\end{lstlisting}
 
 \subsection{Temperatura Padrão — Múltiplas Execuções}
 
-Para caracterizar a variância estocástica, o experimento com temperatura padrão foi repetido 5 vezes (runs 1–5), com os resultados agregados como média~±~desvio padrão por combinação. As Tabelas~\ref{tab:multi_qwen} e~\ref{tab:multi_deepseek} apresentam esses valores (em pontos percentuais). Diferentemente da temperatura zero, aqui uma mesma combinação pode oscilar entre acerto e falha conforme o sorteio dos tokens.
+Para caracterizar a variância estocástica, o experimento com temperatura padrão foi repetido 5 vezes (runs 1–5), com os resultados agregados como média~±~desvio padrão por combinação. A Tabela~\ref{tab:multi_runs} apresenta esses valores (em pontos percentuais). Diferentemente da temperatura zero, aqui uma mesma combinação pode oscilar entre acerto e falha conforme o sorteio dos tokens.
 
 \begin{table}[H]
 \centering
-\caption{qwen2.5-coder — média\,±\,\(\sigma\) em 5 runs com temperatura padrão}
-\label{tab:multi_qwen}
+\caption{Taxas de aprovação — média\,±\,\(\sigma\) em 5 \textit{runs} com temperatura padrão}
+\label{tab:multi_runs}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{lrrrrrr}
+\begin{tabular}{llrrrrrr}
 \toprule
-\textbf{Prob.} & \textbf{Original} & \textbf{Reformulado} & \textbf{Inglês} & \textbf{Verboso} & \textbf{Vago} & \textbf{Com ruído} \\
+\textbf{Modelo} & \textbf{Prob.} & \textbf{Original} & \textbf{Reformulado} & \textbf{Inglês} & \textbf{Verboso} & \textbf{Vago} & \textbf{Com ruído} \\
 \midrule
-P1 & 100\,±\,0  & 80\,±\,45  & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  \\
-P2 & 100\,±\,0  & 60\,±\,55  & 100\,±\,0  & 100\,±\,0  &  80\,±\,45 &  94\,±\,13 \\
-P3 & 100\,±\,0  & 80\,±\,45  &  60\,±\,55 & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  \\
-P4 &  96\,±\,9  &  96\,±\,9  &  86\,±\,31 & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  \\
-P5 &  43\,±\,53 &  37\,±\,51 &   3\,±\,6  &   0\,±\,0  &  23\,±\,44 &  20\,±\,37 \\
+qwen2.5-coder & P1 & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  \\
+qwen2.5-coder & P2 & 100\,±\,0  &  60\,±\,55 & 100\,±\,0  & 100\,±\,0  &  80\,±\,45 &  94\,±\,13 \\
+qwen2.5-coder & P3 & 100\,±\,0  & 100\,±\,0  &  60\,±\,55 & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  \\
+qwen2.5-coder & P4 &  96\,±\,9  &  96\,±\,9  &  86\,±\,31 & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  \\
+qwen2.5-coder & P5 &  60\,±\,55 &  71\,±\,40 &  40\,±\,55 &   0\,±\,0  &  23\,±\,44 &  20\,±\,37 \\
+\midrule
+deepseek-coder & P1 & 100\,±\,0  & 100\,±\,0  & 100\,±\,0  &  20\,±\,45 & 100\,±\,0  & 100\,±\,0  \\
+deepseek-coder & P2 &   0\,±\,0  &   0\,±\,0  &  20\,±\,45 &  54\,±\,51 &   0\,±\,0  &   0\,±\,0  \\
+deepseek-coder & P3 &  80\,±\,45 &  25\,±\,43 &  25\,±\,43 &  60\,±\,55 &  65\,±\,49 &  40\,±\,55 \\
+deepseek-coder & P4 &  62\,±\,42 &  36\,±\,50 &  40\,±\,55 &  48\,±\,44 &  20\,±\,45 &  80\,±\,45 \\
+deepseek-coder & P5 &  17\,±\,38 &  17\,±\,38 &  17\,±\,38 &  20\,±\,45 &   0\,±\,0  &   0\,±\,0  \\
 \bottomrule
 \end{tabular}%
 }
 \end{table}
 
-\begin{table}[H]
-\centering
-\caption{deepseek-coder — média\,±\,\(\sigma\) em 5 runs com temperatura padrão}
-\label{tab:multi_deepseek}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lrrrrrr}
-\toprule
-\textbf{Prob.} & \textbf{Original} & \textbf{Reformulado} & \textbf{Inglês} & \textbf{Verboso} & \textbf{Vago} & \textbf{Com ruído} \\
-\midrule
-P1 &  80\,±\,45 & 100\,±\,0  &  60\,±\,55 &   0\,±\,0  & 100\,±\,0  & 100\,±\,0  \\
-P2 &   0\,±\,0  &   0\,±\,0  &  20\,±\,45 &  40\,±\,55 &   0\,±\,0  &   0\,±\,0  \\
-P3 &  80\,±\,45 &  25\,±\,43 &  25\,±\,43 &  40\,±\,55 &  45\,±\,51 &  40\,±\,55 \\
-P4 &  62\,±\,42 &  36\,±\,50 &  20\,±\,45 &  32\,±\,44 &   0\,±\,0  &  60\,±\,55 \\
-P5 &   0\,±\,0  &  17\,±\,38 &  17\,±\,38 &  20\,±\,45 &   0\,±\,0  &   0\,±\,0  \\
-\bottomrule
-\end{tabular}%
-}
-\end{table}
-
-\textbf{qwen2.5-coder.} A maioria das combinações de P1–P4 apresenta $\sigma = 0$ ou baixo, indicando comportamento estável. As exceções notáveis são \texttt{P1\_reformulado} ($\sigma = 45$, com uma run obtendo 0\%), \texttt{P2\_reformulado} ($\sigma = 55$), \texttt{P3\_ingles} ($\sigma = 55$) e \texttt{P4\_ingles} ($\sigma = 31$) — pontos frágeis que só surgem com múltiplas execuções. Dois bugs ilustram falhas que aparecem apenas em algumas runs e que, sob temperatura zero, não ocorrem. Em \texttt{P2\_com\_ruido} (média 94\,±\,13), uma das execuções gerou normalização incompleta:
+\textbf{qwen2.5-coder.} A maioria das combinações de P1–P4 apresenta $\sigma = 0$ ou baixo, indicando comportamento estável. As exceções notáveis são \texttt{P2\_reformulado} ($\sigma = 55$), \texttt{P3\_ingles} ($\sigma = 55$) e \texttt{P4\_ingles} ($\sigma = 31$) — pontos frágeis que só surgem com múltiplas execuções. Dois bugs ilustram falhas que aparecem apenas em algumas runs e que, sob temperatura zero, não ocorrem. Em \texttt{P2\_com\_ruido} (média 94\,±\,13), uma das execuções gerou normalização incompleta:
 
 \begin{lstlisting}[style=python, caption={qwen2.5-coder em P2\_com\_ruido (uma das runs) — normalização de maiúsculas incompleta}]
 def palindromo(s):
@@ -405,7 +465,7 @@ def contar_vogais(texto):
 
 A chamada \texttt{count('aeiou')} procura a \textit{substring} inteira em vez de cada vogal individualmente.
 
-P5 é o problema mais instável do qwen: nenhuma variante supera média de 43\%, e os desvios elevados (frequentemente próximos de 50pp) indicam execuções que oscilam entre acerto e falha total. Apenas \texttt{P5\_verboso} é consistentemente 0\% (0\,±\,0), uma falha estrutural. Os bugs típicos envolvem tipo de retorno e ordenação — por exemplo, retornar uma lista em ordem crescente em vez de uma tupla decrescente:
+P5 é o problema mais instável do qwen: mesmo as variantes de melhor média (\texttt{P5\_reformulado}, 71\,±\,40, e \texttt{P5\_original}, 60\,±\,55) erram em parte considerável das execuções, e os desvios elevados (frequentemente próximos de 50pp) indicam execuções que oscilam entre acerto e falha total. Apenas \texttt{P5\_verboso} é consistentemente 0\% (0\,±\,0), uma falha estrutural. Os bugs típicos envolvem tipo de retorno e ordenação — por exemplo, retornar uma lista em ordem crescente em vez de uma tupla decrescente:
 
 \begin{lstlisting}[style=python, caption={qwen2.5-coder em P5\_ingles — erro de tipo de retorno}]
 def dois_maiores(numbers):
@@ -420,7 +480,7 @@ def dois_maiores(nums):
     return sorted_nums[-2:]
 \end{lstlisting}
 
-\textbf{deepseek-coder.} A Tabela~\ref{tab:multi_deepseek} confirma alta variância generalizada. As únicas combinações estáveis são as que ficam consistentemente em 0\% (P2\_original, P2\_reformulado, P2\_vago, P2\_com\_ruido, P5\_original, P5\_vago, P5\_com\_ruido) ou em 100\% (P1\_reformulado, P1\_vago, P1\_com\_ruido) — indicando falhas e sucessos estruturais, respectivamente. Tudo mais é essencialmente aleatório, com desvios padrão frequentemente superiores a 40pp.
+\textbf{deepseek-coder.} A Tabela~\ref{tab:multi_runs} confirma alta variância generalizada. As únicas combinações estáveis são as que ficam consistentemente em 0\% (P2\_original, P2\_reformulado, P2\_vago, P2\_com\_ruido, P5\_vago, P5\_com\_ruido) ou em 100\% (P1\_original, P1\_reformulado, P1\_ingles, P1\_vago, P1\_com\_ruido) — indicando falhas e sucessos estruturais, respectivamente. Tudo mais é essencialmente aleatório, com desvios padrão frequentemente superiores a 40pp.
 
 Um achado particularmente notável emergiu na quarta run para o caso \textbf{deepseek-coder~|~P3\_reformulado}. O modelo gerou o seguinte código:
 
@@ -442,9 +502,9 @@ O código é sintaticamente válido e estruturalmente recursivo, mas os casos ba
 
 A comparação entre os dois experimentos permite classificar as falhas observadas em duas categorias.
 
-\textbf{Falhas estruturais} persistem independentemente da temperatura, indicando uma limitação genuína do modelo para aquele \textit{prompt}. Para o \texttt{qwen2.5-coder}, a única falha estrutural identificada é P5 — os prompts verboso e vago consistentemente induzem bugs (tipo de retorno errado ou uso de \texttt{set()}), tanto com temperatura zero quanto na média das cinco runs, ainda que os bugs específicos gerados variem. Para o \texttt{deepseek-coder}, P1\_verboso e P2\_vago produzem código inválido em ambos os experimentos, e P2 nunca atinge 100\% em nenhuma variante.
+\textbf{Falhas estruturais} persistem independentemente da temperatura, indicando uma limitação genuína do modelo para aquele \textit{prompt}. Para o \texttt{qwen2.5-coder}, a única falha estrutural identificada é P5 — os prompts verboso e vago consistentemente induzem bugs (tipo de retorno errado ou uso de \texttt{set()}), tanto com temperatura zero quanto na média das cinco runs, ainda que os bugs específicos gerados variem. Para o \texttt{deepseek-coder}, \texttt{P2\_vago} reprova de forma perfeitamente consistente em ambos os experimentos (0\% em temperatura zero e nas cinco execuções padrão); \texttt{P1\_verboso} é quase tão consistente — falha em temperatura zero e em quatro das cinco execuções padrão, com um único acerto isolado (20\,±\,45) —, e nenhuma variante de P2 atinge 100\% \textit{em média} (o máximo observado em qualquer execução isolada é 100\%, mas apenas esporadicamente, em \texttt{P2\_ingles} e \texttt{P2\_verboso}).
 
-\textbf{Falhas estocásticas} aparecem apenas com temperatura padrão e desaparecem com temperatura zero — ou o contrário. São resultado da amostragem probabilística que eventualmente seleciona tokens de um caminho incorreto. Os exemplos mais claros são: P4\_ingles do qwen (\texttt{str.count} em algumas runs, loop correto com temperatura zero), P2\_com\_ruido do qwen (normalização incompleta em algumas runs, correta com zero) e P4\_com\_ruido do deepseek (acerto ocasional sob temperatura padrão, média 60\,±\,55, mas 0\% com temperatura zero).
+\textbf{Falhas estocásticas} aparecem apenas com temperatura padrão e desaparecem com temperatura zero — ou o contrário. São resultado da amostragem probabilística que eventualmente seleciona tokens de um caminho incorreto. Os exemplos mais claros estão no \texttt{qwen2.5-coder}: \texttt{P4\_ingles} (\texttt{str.count} em algumas runs, \textit{loop} correto com temperatura zero) e \texttt{P2\_com\_ruido} (normalização incompleta em algumas runs, correta com zero). No \texttt{deepseek-coder} a componente estocástica é difusa — a maioria das combinações apresenta desvio padrão elevado (Tabela~\ref{tab:multi_runs}), oscilando entre acerto e falha sem um caso isolado tão nítido.
 
 Esses contrastes reforçam o argumento de Bommasani et al.~\cite{bommasani2023helm}: a avaliação por um único \textit{prompt} — ou por uma única execução — pode levar a conclusões opostas sobre a mesma capacidade, o que justifica a cobertura multidimensional (múltiplas variantes e múltiplas execuções) adotada neste trabalho.
 
