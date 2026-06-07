@@ -12,7 +12,7 @@ Como usar:
   1. Para cada problema, envie cada variação de prompt ao modelo (Ollama)
   2. Cole o código gerado na função run_generated_code()
   3. Execute este arquivo: python test_suite.py
-  4. Os resultados são salvos em results.json
+  4. Os resultados são salvos no arquivo de saída indicado (ver rodar_todos)
 """
 
 import json
@@ -468,10 +468,10 @@ def avaliar_modelo(modelo: str, variante: str) -> dict:
     }
 
 
-def rodar_todos() -> dict:
+def rodar_todos(saida_path: str = "results.json") -> dict:
     """
     Roda todos os modelos × variantes que tiverem código preenchido.
-    Salva em results.json e imprime um resumo.
+    Salva em saida_path e imprime um resumo.
     """
     todos_resultados = []
     resumo = []
@@ -515,10 +515,10 @@ def rodar_todos() -> dict:
         "timestamp": datetime.now().isoformat(),
         "resultados": todos_resultados,
     }
-    with open("results.json", "w", encoding="utf-8") as f:
+    with open(saida_path, "w", encoding="utf-8") as f:
         json.dump(saida, f, ensure_ascii=False, indent=2)
 
-    print(f"\nResultados salvos em results.json")
+    print(f"\nResultados salvos em {saida_path}")
     return saida
 
 

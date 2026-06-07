@@ -9,13 +9,13 @@ Este script aplica uma heurística de extração linha a linha:
   - Mantém linhas que são código Python válido (def, return, if, for, etc.)
   - Descarta linhas que são claramente prosa em português ou inglês
   - Descarta linhas de print() e input() que não fazem parte da função
-  - Salva o resultado em generated_code_limpo.json
+  - Salva o resultado em generated_code_limpo_temp_zero.json
 
 Como usar:
   python extrair_codigo.py
 
 Depois rode os testes com o arquivo limpo:
-  python rodar_testes.py --input generated_code_limpo.json
+  python rodar_testes.py --input generated_code_limpo_temp_zero.json
 """
 
 import json
@@ -168,7 +168,7 @@ def validar_sintaxe(codigo: str) -> bool:
 
 
 def processar_arquivo(caminho_entrada: str, caminho_saida: str):
-    """Processa o generated_code.json e salva versão limpa."""
+    """Processa o arquivo de código bruto e salva versão limpa."""
     with open(caminho_entrada, "r", encoding="utf-8") as f:
         dados = json.load(f)
 
@@ -220,8 +220,8 @@ def processar_arquivo(caminho_entrada: str, caminho_saida: str):
 
 
 if __name__ == "__main__":
-    entrada = "generated_code.json"
-    saida = "generated_code_limpo.json"
+    entrada = "generated_code_temp_zero.json"
+    saida = "generated_code_limpo_temp_zero.json"
 
     if len(sys.argv) > 1:
         entrada = sys.argv[1]

@@ -10,7 +10,7 @@ Pré-requisito:
 Como usar:
   python coletar_respostas.py
 
-O script salva o código gerado em generated_code.json,
+O script salva o código gerado em generated_code_temp_zero.json,
 que pode ser importado no test_suite.py.
 """
 
@@ -71,7 +71,7 @@ def chamar_ollama(modelo: str, prompt: str) -> str:
 def coletar_tudo():
     # Carrega resultados anteriores para não repetir prompts já coletados
     try:
-        with open("generated_code.json", encoding="utf-8") as f:
+        with open("generated_code_temp_zero.json", encoding="utf-8") as f:
             resultado = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         resultado = {}
@@ -100,10 +100,10 @@ def coletar_tudo():
                 print("FALHOU (vazio)")
 
             # Salva após cada prompt para não perder progresso
-            with open("generated_code.json", "w", encoding="utf-8") as f:
+            with open("generated_code_temp_zero.json", "w", encoding="utf-8") as f:
                 json.dump(resultado, f, ensure_ascii=False, indent=2)
 
-    print(f"\nCódigos gerados salvos em generated_code.json")
+    print(f"\nCódigos gerados salvos em generated_code_temp_zero.json")
     print("Para rodar os testes, execute: python rodar_testes.py")
     return resultado
 

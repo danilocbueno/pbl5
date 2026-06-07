@@ -1,14 +1,14 @@
 """
 executar_multiplos_runs.py — executa runs 2-5 com temperatura padrão e agrega
-com o run 1 já existente (results_temp_default.json).
+com o run 1 já existente (results_temp_padrao_run1.json).
 
 Uso:
   python executar_multiplos_runs.py
 
 Saída:
-  generated_code_run_2.json ... generated_code_run_5.json
-  results_run_2.json        ... results_run_5.json
-  results_agregado.json     (média ± desvio padrão das 5 runs)
+  generated_code_temp_padrao_run2.json ... generated_code_temp_padrao_run5.json
+  results_temp_padrao_run2.json        ... results_temp_padrao_run5.json
+  results_temp_padrao_agregado.json    (média ± desvio padrão das 5 runs)
 """
 
 import json
@@ -58,8 +58,8 @@ def chamar_ollama(modelo: str, prompt: str) -> str:
 
 
 def coletar_run(run_id: int) -> dict:
-    """Coleta uma run completa sem cache. Salva em generated_code_run_{id}.json."""
-    fname = f"generated_code_run_{run_id}.json"
+    """Coleta uma run completa sem cache. Salva em generated_code_temp_padrao_run{id}.json."""
+    fname = f"generated_code_temp_padrao_run{run_id}.json"
     resultado = {}
 
     for modelo in MODELOS:
@@ -96,10 +96,10 @@ def extrair_run(generated_code: dict) -> dict:
 
 # ─── Testes ──────────────────────────────────────────────────────────────────
 
-def rodar_testes_run(generated_code_limpo: dict) -> list:
+def rodar_testes_run(generated_code_limpo: dict, saida_path: str) -> list:
     """Injeta código no test_suite e retorna lista de resultados."""
     test_suite.GENERATED_CODE = generated_code_limpo
-    saida = test_suite.rodar_todos()
+    saida = test_suite.rodar_todos(saida_path)
     return saida["resultados"]
 
 
@@ -156,7 +156,7 @@ def imprimir_resumo_agregado(agregado: dict):
                 print(f"  {modelo:25s} | {problema} | médias: {medias} | variação: {variacao:.1f}pp")
 
 
-def salvar_agregado(agregado: dict, fname: str = "results_agregado.json"):
+def salvar_agregado(agregado: dict, fname: str = "results_temp_padrao_agregado.json"):
     serializavel = {
         f"{modelo}|{variante}": stats
         for (modelo, variante), stats in agregado.items()
@@ -192,9 +192,9 @@ def main():
 
     imprimir_ambiente()
 
-    # Run 1 — já existe em results_temp_default.json
-    print("Carregando run 1 (results_temp_default.json)...")
-    with open("results_temp_default.json", encoding="utf-8") as f:
+    # Run 1 — já existe em results_temp_padrao_run1.json
+    print("Carregando run 1 (results_temp_padrao_run1.json)...")
+    with open("results_temp_padrao_run1.json", encoding="utf-8") as f:
         run1 = json.load(f)
     todos_resultados.append(run1["resultados"])
     print(f"  Run 1: {len(run1['resultados'])} combinações carregadas.")
@@ -210,14 +210,13 @@ def main():
         generated_code_limpo = extrair_run(generated_code)
 
         # Salva código limpo para referência
-        with open(f"generated_code_limpo_run_{run_id}.json", "w", encoding="utf-8") as f:
+        with open(f"generated_code_limpo_temp_padrao_run{run_id}.json", "w", encoding="utf-8") as f:
             json.dump(generated_code_limpo, f, ensure_ascii=False, indent=2)
 
-        resultados = rodar_testes_run(generated_code_limpo)
-
-        # Salva results desta run
-        with open(f"results_run_{run_id}.json", "w", encoding="utf-8") as f:
-            json.dump({"run": run_id, "resultados": resultados}, f, ensure_ascii=False, indent=2)
+        # Roda os testes e salva os resultados desta run
+        resultados = rodar_testes_run(
+            generated_code_limpo, f"results_temp_padrao_run{run_id}.json"
+        )
 
         todos_resultados.append(resultados)
         dur_run = time.time() - t_run
